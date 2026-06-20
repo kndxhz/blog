@@ -1,0 +1,42 @@
+---
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+---
+
+
+<!doctype html>
+<html lang="cn">
+    <head>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    </head>
+    <body>
+        <Header />
+        <main>
+            <h1>404 - Not Found</h1>
+            <p>抱歉，您访问的页面不存在。</p>
+            <a href="/">将在 <span id="countdown">5</span> 秒后返回首页</a>
+
+        </main>
+        <Footer />
+        <script>
+            let countdown = 5;
+            const countdownElement = document.getElementById("countdown");
+
+            const timer = window.setInterval(() => {
+                countdown -= 1;
+
+                if (countdownElement) {
+                    countdownElement.textContent = String(countdown);
+                }
+
+                if (countdown === 0) {
+                    window.clearInterval(timer);
+                    window.location.href = "/";
+                }
+            }, 1000);
+        </script>
+    </body>
+</html>
+                        height={360}

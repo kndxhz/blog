@@ -24,30 +24,32 @@ const posts = (await getCollection("blog")).sort(
       <ClientRouter />
       <p class="title">小伙纸的杂货间</p>
       <p class="sub-title">喵喵?喵喵喵?喵喵喵!</p>
-      <section>
-        <ul>
-          {
-            posts.map((post) => (
-              <li>
-                <a href={`/blog/${post.id}/`}>
-                  {post.data.heroImage && (
-                    <Image
-                      width={720}
-                      height={360}
-                      src={post.data.heroImage}
-                      alt=""
-                    />
-                  )}
-                  <h4 class="title">{post.data.title}</h4>
-                  <p class="date">
-                    <FormattedDate date={post.data.pubDate} />
-                  </p>
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </section>
+      <div class="posts">
+        <section>
+          <ul>
+            {
+              posts.map((post) => (
+                <li>
+                  <a href={`/${post.id}/`}>
+                    {post.data.heroImage && (
+                      <Image
+                        width={720}
+                        height={360}
+                        src={post.data.heroImage}
+                        alt=""
+                      />
+                    )}
+                    <h4 class="title">{post.data.title}</h4>
+                    <p class="date">
+                      <FormattedDate date={post.data.pubDate} />
+                    </p>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+      </div>
     </main>
 
     <Footer />
@@ -119,6 +121,9 @@ const posts = (await getCollection("blog")).sort(
   }
   ul a:hover img {
     box-shadow: var(--box-shadow);
+  }
+  .posts {
+    margin-top: 10%;
   }
   @media (max-width: 720px) {
     ul {
