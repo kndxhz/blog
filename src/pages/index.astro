@@ -203,6 +203,27 @@ const posts = (await getCollection("blog")).sort(
       0 8px 22px rgba(32, 48, 32, 0.1);
     cursor: auto;
     min-width: 0;
+    overflow: hidden;
+    transform-origin: top left;
+    transition:
+      opacity 0.22s ease,
+      transform 0.22s ease,
+      max-height 0.22s ease;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+    pointer-events: none;
+  }
+  .hitokoto-detail[data-state="open"] {
+    max-height: 24rem;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+  .hitokoto-detail[data-state="closing"] {
+    max-height: 24rem;
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
   }
   .hitokoto-detail-title {
     margin: 0 0 0.35rem;

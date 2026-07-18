@@ -392,12 +392,7 @@ body > header .nav-label {
 }
 
 body > header .internal-links a::before {
-	content: "";
-	width: 8px;
-	height: 8px;
-	border-radius: 999px;
-	background: currentColor;
-	opacity: 0.45;
+	content: none;
 }
 
 body > header .internal-links a.active {

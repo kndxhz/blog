@@ -70,10 +70,36 @@ function initHitokotoDetail() {
 
   trigger.dataset.detailReady = "true";
 
+  detail.hidden = true;
+  detail.removeAttribute("data-state");
+  detail.setAttribute("aria-hidden", "true");
+
   const toggleDetail = () => {
     const expanded = trigger.getAttribute("aria-expanded") === "true";
-    trigger.setAttribute("aria-expanded", expanded ? "false" : "true");
-    detail.hidden = expanded;
+    if (expanded) {
+      trigger.setAttribute("aria-expanded", "false");
+      detail.dataset.state = "closing";
+      detail.setAttribute("aria-hidden", "true");
+
+      const onEnd = (event: TransitionEvent) => {
+        if (event.target !== detail || event.propertyName !== "opacity") return;
+        if (detail.dataset.state === "closing") {
+          detail.hidden = true;
+          detail.removeAttribute("data-state");
+        }
+        detail.removeEventListener("transitionend", onEnd);
+      };
+
+      detail.addEventListener("transitionend", onEnd);
+      return;
+    }
+
+    trigger.setAttribute("aria-expanded", "true");
+    detail.hidden = false;
+    detail.setAttribute("aria-hidden", "false");
+    requestAnimationFrame(() => {
+      detail.dataset.state = "open";
+    });
   };
 
   trigger.addEventListener("click", toggleDetail);

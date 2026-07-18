@@ -30,7 +30,9 @@ export function initTagsPage() {
   const emptyEl = document.getElementById("empty-state");
   const clearBtn = document.getElementById("clear-filters");
 
-  if (!filtersEl || !postsEl) return;
+  if (!filtersEl || !postsEl || filtersEl.dataset.tagsReady === "true") return;
+
+  filtersEl.dataset.tagsReady = "true";
 
   const render = () => {
     const selected = new Set(readSelectedTags());
