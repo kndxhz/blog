@@ -34,7 +34,7 @@ const tags = [...tagCounts.entries()].sort(
   </head>
   <body>
     <Header />
-    <main>
+    <main transition:animate="fade">
       <section class="page-head">
         <div>
           <p class="eyebrow">标签</p>
@@ -80,10 +80,13 @@ const tags = [...tagCounts.entries()].sort(
                       height={270}
                       src={post.data.heroImage}
                       alt=""
+                      transition:name={`post-image-${post.id}`}
                     />
                   )}
                   <div class="post-copy">
-                    <h3>{post.data.title}</h3>
+                    <h3 transition:name={`post-title-${post.id}`}>
+                      {post.data.title}
+                    </h3>
                     <p>{post.data.description}</p>
                     <div class="post-meta">
                       <span>
@@ -104,99 +107,8 @@ const tags = [...tagCounts.entries()].sort(
     </main>
     <Footer />
 
-    <script is:inline>
-      const filtersEl = document.getElementById("tag-filters");
-      const postsEl = document.getElementById("post-list");
-      const summaryEl = document.getElementById("tag-summary");
-      const emptyEl = document.getElementById("empty-state");
-      const clearBtn = document.getElementById("clear-filters");
-
-      function readSelectedTags() {
-        const params = new URLSearchParams(window.location.search);
-        const raw = params.get("tags") || "";
-        return raw
-          .split(",")
-          .map((tag) => tag.trim())
-          .filter(Boolean);
-      }
-
-      function writeSelectedTags(tags) {
-        const params = new URLSearchParams(window.location.search);
-        if (tags.length > 0) {
-          params.set("tags", tags.join(","));
-        } else {
-          params.delete("tags");
-        }
-        const nextUrl = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ""}`;
-        window.history.replaceState({}, "", nextUrl);
-      }
-
-      function render() {
-        const selected = new Set(readSelectedTags());
-        const chips = filtersEl
-          ? Array.from(filtersEl.querySelectorAll("[data-tag]"))
-          : [];
-        const items = postsEl
-          ? Array.from(postsEl.querySelectorAll("[data-tags]"))
-          : [];
-        let visibleCount = 0;
-
-        chips.forEach((chip) => {
-          chip.classList.toggle("active", selected.has(chip.dataset.tag));
-        });
-
-        items.forEach((item) => {
-          const itemTags = (item.getAttribute("data-tags") || "")
-            .split(",")
-            .map((tag) => tag.trim())
-            .filter(Boolean);
-          const visible =
-            selected.size === 0 ||
-            [...selected].every((tag) => itemTags.includes(tag));
-          item.hidden = !visible;
-          if (visible) visibleCount += 1;
-        });
-
-        if (summaryEl) {
-          summaryEl.textContent =
-            selected.size === 0
-              ? `共 ${items.length} 篇文章。`
-              : `已选 ${selected.size} 个标签，显示 ${visibleCount} 篇文章。`;
-        }
-
-        if (emptyEl) {
-          emptyEl.hidden = visibleCount !== 0;
-        }
-      }
-
-      function toggleTag(tag) {
-        const selected = new Set(readSelectedTags());
-        if (selected.has(tag)) {
-          selected.delete(tag);
-        } else {
-          selected.add(tag);
-        }
-        writeSelectedTags([...selected]);
-        render();
-      }
-
-      if (filtersEl) {
-        filtersEl.addEventListener("click", (event) => {
-          const button = event.target.closest("[data-tag]");
-          if (!button) return;
-          toggleTag(button.dataset.tag);
-        });
-      }
-
-      if (clearBtn) {
-        clearBtn.addEventListener("click", () => {
-          writeSelectedTags([]);
-          render();
-        });
-      }
-
-      document.addEventListener("DOMContentLoaded", render);
-      document.addEventListener("astro:page-load", render);
+    <script>
+      import "../scripts/tagsPage";
     </script>
   </body>
 </html>
@@ -275,15 +187,22 @@ const tags = [...tagCounts.entries()].sort(
   }
   .tag-post a {
     display: grid;
-    grid-template-columns: 9rem minmax(0, 1fr);
+    grid-template-columns: 8rem minmax(0, 1fr);
     gap: 1rem;
     align-items: start;
-    padding: 0.9rem 0;
+    min-height: 5.5rem;
+    padding: 0.75rem 1rem;
     text-decoration: none;
     border-bottom: 1px solid var(--outline);
+    transition:
+      background-color 0.18s ease,
+      color 0.18s ease;
+  }
+  .tag-post a:hover {
+    background: var(--state-layer);
   }
   .tag-post img {
-    width: 9rem;
+    width: 8rem;
     aspect-ratio: 16 / 9;
     object-fit: cover;
     border-radius: 12px;
@@ -297,11 +216,21 @@ const tags = [...tagCounts.entries()].sort(
   .post-copy h3 {
     margin: 0;
     font-size: 1.25rem;
+    line-height: 1.2;
+    color: rgb(var(--black));
   }
   .post-copy p {
     margin: 0;
     color: rgb(var(--gray));
     line-height: 1.6;
+  }
+  .post-copy .excerpt {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+  .post-copy .date {
+    margin: 0;
+    font-size: 0.95rem;
   }
   .post-meta {
     display: flex;

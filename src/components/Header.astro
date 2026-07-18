@@ -1,47 +1,46 @@
 ---
-import { getCollection } from "astro:content";
 import { SITE_TITLE } from "../consts";
 import HeaderLink from "./HeaderLink.astro";
-
-const posts = await getCollection("blog");
-const tagCounts = new Map<string, number>();
-
-for (const post of posts) {
-  for (const tag of post.data.tags) {
-    tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
-  }
-}
-
-const tags = [...tagCounts.entries()]
-  .sort(([aTag, aCount], [bTag, bCount]) => bCount - aCount || aTag.localeCompare(bTag));
 ---
 
 <header>
+  <script>
+    import "../scripts/sidebar";
+  </script>
   <nav>
-    <a class="brand" href="/">
-      <span class="brand-mark" aria-hidden="true"></span>
-      <span class="brand-copy">
-        <span class="brand-title">{SITE_TITLE}</span>
-        <span class="brand-subtitle">Material Design</span>
-      </span>
-    </a>
-    <div class="internal-links">
-      <HeaderLink href="/">主页</HeaderLink>
-      <HeaderLink href="/tags">标签</HeaderLink>
+    <div class="brand-row">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-copy">
+          <span class="brand-title">{SITE_TITLE}</span>
+          <span class="brand-subtitle">永远相信美好的事情即将发生</span>
+        </span>
+      </a>
+      <button
+        class="sidebar-toggle"
+        type="button"
+        data-sidebar-toggle
+        aria-label="收起侧边栏"
+        aria-expanded="true"
+      >
+        <i class="bi bi-chevron-left sidebar-icon-collapse" aria-hidden="true"></i>
+        <i class="bi bi-chevron-right sidebar-icon-expand" aria-hidden="true"></i>
+      </button>
     </div>
-    <section class="sidebar-tags" aria-labelledby="sidebar-tags-title">
-      <h3 id="sidebar-tags-title">标签</h3>
-      <div class="tag-list">
-        {
-          tags.map(([tag, count]) => (
-            <a class="tag-chip" href={`/tags?tags=${encodeURIComponent(tag)}`}>
-              <span>{tag}</span>
-              <span class="tag-count">{count}</span>
-            </a>
-          ))
-        }
-      </div>
-    </section>
+    <div class="internal-links">
+      <HeaderLink href="/">
+        <span class="nav-icon" aria-hidden="true">
+          <i class="bi bi-house-fill" aria-hidden="true"></i>
+        </span>
+        <span class="nav-label">主页</span>
+      </HeaderLink>
+      <HeaderLink href="/tags">
+        <span class="nav-icon" aria-hidden="true">
+          <i class="bi bi-tags-fill" aria-hidden="true"></i>
+        </span>
+        <span class="nav-label">标签</span>
+      </HeaderLink>
+    </div>
     <div class="social-links">
       <a href="https://github.com/kndxhz/blog" target="_blank">
         <span class="sr-only">博客的 GitHub 链接</span>

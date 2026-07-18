@@ -27,7 +27,7 @@ const posts = (await getCollection("blog")).sort(
   </head>
   <body>
     <Header />
-    <main>
+    <main transition:animate="fade">
       <section class="home-head" aria-labelledby="home-title">
         <div>
           <p id="home-title" class="title">小伙纸的杂货间</p>
@@ -74,10 +74,13 @@ const posts = (await getCollection("blog")).sort(
                           height={360}
                           src={post.data.heroImage}
                           alt=""
+                          transition:name={`post-image-${post.id}`}
                         />
                       )}
                       <div class="post-copy">
-                        <h4 class="title">{post.data.title}</h4>
+                        <h4 class="title" transition:name={`post-title-${post.id}`}>
+                          {post.data.title}
+                        </h4>
                         <p class="excerpt">{post.data.description}</p>
                         <p class="date">
                           <FormattedDate date={post.data.pubDate} />
@@ -97,89 +100,8 @@ const posts = (await getCollection("blog")).sort(
     </main>
 
     <Footer />
-    <script is:inline>
-      function loadHomeHitokoto() {
-        const content = document.querySelector("#hitokoto-content");
-        const source = document.querySelector("#hitokoto-source");
-        const detailOrigin = document.querySelector("#hitokoto-detail-origin");
-        const detailContent = document.querySelector(
-          "#hitokoto-detail-content",
-        );
-        const detailTranslate = document.querySelector(
-          "#hitokoto-detail-translate",
-        );
-
-        if (!content || !source || !window.jinrishici) return;
-
-        window.jinrishici.load(
-          function (result) {
-            const data = result && result.data;
-            const origin = data && data.origin;
-            if (!data || !origin) return;
-
-            content.textContent = data.content;
-            source.textContent = `【${origin.dynasty}】${origin.author}《${origin.title}》`;
-            if (detailOrigin)
-              detailOrigin.textContent = `【${origin.dynasty}】${origin.author}《${origin.title}》`;
-            if (detailContent)
-              detailContent.textContent = Array.isArray(origin.content)
-                ? origin.content.join("\n")
-                : data.content;
-            if (detailTranslate) {
-              detailTranslate.textContent =
-                Array.isArray(origin.translate) && origin.translate.length > 0
-                  ? origin.translate.join("\n")
-                  : "暂无译文";
-            }
-          },
-          function () {
-            source.textContent = "今日诗词暂时不可用";
-          },
-        );
-      }
-
-      function initHomeHitokoto() {
-        if (window.jinrishici) {
-          loadHomeHitokoto();
-          return;
-        }
-
-        window.setTimeout(initHomeHitokoto, 120);
-      }
-
-      document.addEventListener("DOMContentLoaded", initHomeHitokoto);
-      document.addEventListener("astro:page-load", initHomeHitokoto);
-
-      function initHitokotoDetail() {
-        const trigger = document.querySelector(".home-hitokoto");
-        const detail = document.querySelector("#hitokoto-detail");
-        if (!trigger || !detail || trigger.dataset.detailReady === "true")
-          return;
-
-        trigger.dataset.detailReady = "true";
-        function toggleDetail() {
-          const expanded = trigger.getAttribute("aria-expanded") === "true";
-          if (expanded) {
-            trigger.setAttribute("aria-expanded", "false");
-            detail.hidden = true;
-            return;
-          }
-
-          trigger.setAttribute("aria-expanded", "true");
-          detail.hidden = false;
-        }
-
-        trigger.addEventListener("click", toggleDetail);
-        trigger.addEventListener("keydown", function (event) {
-          if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            toggleDetail();
-          }
-        });
-      }
-
-      document.addEventListener("DOMContentLoaded", initHitokotoDetail);
-      document.addEventListener("astro:page-load", initHitokotoDetail);
+    <script>
+      import "../scripts/homeHitokoto";
     </script>
   </body>
 </html>

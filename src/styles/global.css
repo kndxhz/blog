@@ -57,6 +57,14 @@ body {
 	grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
 	gap: 0;
 }
+
+html.sidebar-animating body {
+	transition: grid-template-columns 0.28s ease;
+}
+
+html.sidebar-collapsed body {
+	grid-template-columns: 80px minmax(0, 1fr);
+}
 main {
 	min-width: 0;
 	padding: 2rem clamp(1rem, 3vw, 2rem) 3rem;
@@ -235,11 +243,22 @@ body > header {
 	box-sizing: border-box;
 }
 
+html.sidebar-animating body > header {
+	transition: padding 0.28s ease, width 0.28s ease;
+}
+
 body > header nav {
 	display: flex;
 	flex-direction: column;
 	gap: 1.25rem;
 	height: 100%;
+}
+
+body > header .brand-row {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	justify-content: space-between;
 }
 
 body > header .brand {
@@ -252,6 +271,49 @@ body > header .brand {
 	color: var(--on-primary-container);
 	box-shadow: 0 1px 2px rgba(32, 48, 32, 0.08);
 	text-decoration: none;
+	transition: border-radius 0.28s ease, padding 0.28s ease, opacity 0.28s ease;
+}
+
+body > header .sidebar-toggle {
+	border: 0;
+	width: 2.75rem;
+	height: 2.75rem;
+	border-radius: 999px;
+	background: var(--surface-container-high);
+	color: var(--primary);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+	cursor: pointer;
+	transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+body > header .sidebar-toggle:hover {
+	background: var(--state-layer);
+	transform: translateX(1px);
+}
+
+body > header .sidebar-toggle svg {
+	width: 1rem;
+	height: 1rem;
+}
+
+body > header .sidebar-toggle i {
+	font-size: 1rem;
+	line-height: 1;
+}
+
+body > header .sidebar-icon-expand {
+	display: none;
+}
+
+html.sidebar-collapsed body > header .sidebar-icon-collapse {
+	display: none;
+}
+
+html.sidebar-collapsed body > header .sidebar-icon-expand {
+	display: inline-block;
 }
 
 body > header .brand-mark {
@@ -306,6 +368,29 @@ body > header .internal-links a {
 	transition: background-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
 }
 
+body > header .nav-icon {
+	width: 1rem;
+	height: 1rem;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex: none;
+}
+
+body > header .nav-icon svg {
+	width: 1rem;
+	height: 1rem;
+}
+
+body > header .nav-icon i {
+	font-size: 1rem;
+	line-height: 1;
+}
+
+body > header .nav-label {
+	transition: opacity 0.2s ease, transform 0.2s ease, max-width 0.2s ease;
+}
+
 body > header .internal-links a::before {
 	content: "";
 	width: 8px;
@@ -323,6 +408,7 @@ body > header .internal-links a.active {
 
 body > header .internal-links a:hover {
 	background: var(--state-layer);
+	transform: translateX(2px);
 }
 
 body > header .sidebar-tags {
@@ -347,6 +433,13 @@ body > header .sidebar-tags .tag-list {
 	gap: 0.45rem;
 }
 
+body > header .sidebar-tags,
+body > header .brand-copy,
+body > header .nav-label,
+body > header .social-links {
+	transition: opacity 0.2s ease, max-height 0.28s ease, margin 0.28s ease, padding 0.28s ease;
+}
+
 body > header .social-links {
 	margin-top: auto;
 	display: flex;
@@ -367,6 +460,50 @@ body > header .social-links a {
 body > header .social-links a:hover {
 	background: var(--state-layer);
 	color: var(--primary);
+}
+
+html.sidebar-collapsed body > header {
+	padding: 0.75rem 0.5rem;
+}
+
+html.sidebar-collapsed body > header nav {
+	align-items: center;
+}
+
+html.sidebar-collapsed body > header .brand-row {
+	justify-content: center;
+	width: 100%;
+}
+
+html.sidebar-collapsed body > header .brand {
+	display: none;
+}
+
+html.sidebar-collapsed body > header .brand-copy,
+html.sidebar-collapsed body > header .nav-label,
+html.sidebar-collapsed body > header .sidebar-tags,
+html.sidebar-collapsed body > header .social-links {
+	display: none;
+}
+
+html.sidebar-collapsed body > header .internal-links {
+	align-items: center;
+	width: 100%;
+}
+
+html.sidebar-collapsed body > header .internal-links a {
+	justify-content: center;
+	padding: 0;
+	width: 2.75rem;
+	height: 2.75rem;
+	min-height: 2.75rem;
+	border-radius: 999px;
+	margin-inline: auto;
+	gap: 0;
+}
+
+html.sidebar-collapsed body > header .internal-links a::before {
+	display: none;
 }
 
 .tag-list {
