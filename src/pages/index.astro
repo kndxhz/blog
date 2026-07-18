@@ -14,7 +14,7 @@ const posts = (await getCollection("blog")).sort(
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
     <ClientRouter />
@@ -76,10 +76,16 @@ const posts = (await getCollection("blog")).sort(
                           alt=""
                         />
                       )}
-                      <h4 class="title">{post.data.title}</h4>
-                      <p class="date">
-                        <FormattedDate date={post.data.pubDate} />
-                      </p>
+                      <div class="post-copy">
+                        <h4 class="title">{post.data.title}</h4>
+                        <p class="excerpt">{post.data.description}</p>
+                        <p class="date">
+                          <FormattedDate date={post.data.pubDate} />
+                        </p>
+                        <div class="tag-list" aria-label={`标签: ${post.data.tags.join(", ")}`}>
+                          {post.data.tags.map((tag) => <span class="tag-chip">{tag}</span>)}
+                        </div>
+                      </div>
                     </a>
                   </li>
                 ))
@@ -318,7 +324,7 @@ const posts = (await getCollection("blog")).sort(
     display: grid;
     grid-template-columns: 8rem minmax(0, 1fr);
     gap: 1rem;
-    align-items: center;
+    align-items: start;
     min-height: 5.5rem;
     padding: 0.75rem 1rem;
     border-radius: 16px;
@@ -345,14 +351,43 @@ const posts = (await getCollection("blog")).sort(
     line-height: 1.2;
     font-size: 1.25rem;
   }
+  .post-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-width: 0;
+  }
+  .excerpt {
+    margin: 0;
+    color: rgb(var(--gray));
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
   ul li a:hover .title,
   ul li a:hover .date {
     color: var(--accent-dark);
   }
   .date {
-    margin: 0.25rem 0 0;
+    margin: 0;
     color: rgb(var(--gray));
     font-size: 0.95rem;
+  }
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.7rem;
+  }
+  .tag-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.28rem 0.65rem;
+    border-radius: 999px;
+    background: var(--secondary-container);
+    color: var(--primary);
+    font-size: 0.78rem;
+    line-height: 1;
   }
   .posts {
     margin-top: 2rem;
@@ -374,6 +409,9 @@ const posts = (await getCollection("blog")).sort(
       grid-template-columns: 1fr;
       gap: 0.75rem;
       padding: 0.75rem 0;
+    }
+    .post-copy {
+      gap: 0.4rem;
     }
     ul li img {
       width: 100%;

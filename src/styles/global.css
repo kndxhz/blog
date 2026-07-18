@@ -325,6 +325,28 @@ body > header .internal-links a:hover {
 	background: var(--state-layer);
 }
 
+body > header .sidebar-tags {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	padding: 1rem;
+	border-radius: 24px;
+	background: var(--surface-container-high);
+}
+
+body > header .sidebar-tags h3 {
+	margin: 0;
+	font-size: 0.9rem;
+	font-weight: 700;
+	color: var(--primary);
+}
+
+body > header .sidebar-tags .tag-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.45rem;
+}
+
 body > header .social-links {
 	margin-top: auto;
 	display: flex;
@@ -345,6 +367,35 @@ body > header .social-links a {
 body > header .social-links a:hover {
 	background: var(--state-layer);
 	color: var(--primary);
+}
+
+.tag-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.45rem;
+}
+
+.tag-chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	padding: 0.3rem 0.7rem;
+	border-radius: 999px;
+	background: var(--secondary-container);
+	color: var(--primary);
+	font-size: 0.78rem;
+	line-height: 1;
+	text-decoration: none;
+}
+
+.tag-chip.active {
+	background: var(--primary);
+	color: var(--on-primary);
+}
+
+.tag-count {
+	font-size: 0.72rem;
+	opacity: 0.8;
 }
 
 @media (max-width: 720px) {

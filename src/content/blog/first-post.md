@@ -1,6 +1,10 @@
 ---
 title: 'First post'
 description: 'Lorem ipsum dolor sit amet'
+tags:
+  - astro
+  - markdown
+  - blog
 pubDate: 'Jul 08 2022'
 heroImage: '../../assets/blog-placeholder-3.jpg'
 ---

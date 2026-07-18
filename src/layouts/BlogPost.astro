@@ -9,10 +9,10 @@ import { ClientRouter } from "astro:transitions";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <BaseHead title={title} description={description} />
     <ClientRouter />
@@ -59,6 +59,12 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
         margin: 0;
         font-size: clamp(2rem, 5vw, 3.25rem);
       }
+      .description {
+        margin: 0.75rem 0 0;
+        color: rgb(var(--gray-dark));
+        font-size: 1.05rem;
+        line-height: 1.75;
+      }
       .date {
         display: inline-flex;
         align-items: center;
@@ -73,6 +79,9 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
       }
       .last-updated-on {
         color: rgb(var(--gray));
+      }
+      .tags {
+        margin-top: 1rem;
       }
       @media (max-width: 720px) {
         .prose {
@@ -110,6 +119,10 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
               }
             </div>
             <h1>{title}</h1>
+            <p class="description">{description}</p>
+            <div class="tag-list tags" aria-label={`标签: ${tags.join(", ")}`}>
+              {tags.map((tag) => <span class="tag-chip">{tag}</span>)}
+            </div>
             <hr />
           </div>
           <slot />

@@ -1,6 +1,19 @@
 ---
+import { getCollection } from "astro:content";
 import { SITE_TITLE } from "../consts";
 import HeaderLink from "./HeaderLink.astro";
+
+const posts = await getCollection("blog");
+const tagCounts = new Map<string, number>();
+
+for (const post of posts) {
+  for (const tag of post.data.tags) {
+    tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
+  }
+}
+
+const tags = [...tagCounts.entries()]
+  .sort(([aTag, aCount], [bTag, bCount]) => bCount - aCount || aTag.localeCompare(bTag));
 ---
 
 <header>
@@ -14,7 +27,21 @@ import HeaderLink from "./HeaderLink.astro";
     </a>
     <div class="internal-links">
       <HeaderLink href="/">主页</HeaderLink>
+      <HeaderLink href="/tags">标签</HeaderLink>
     </div>
+    <section class="sidebar-tags" aria-labelledby="sidebar-tags-title">
+      <h3 id="sidebar-tags-title">标签</h3>
+      <div class="tag-list">
+        {
+          tags.map(([tag, count]) => (
+            <a class="tag-chip" href={`/tags?tags=${encodeURIComponent(tag)}`}>
+              <span>{tag}</span>
+              <span class="tag-count">{count}</span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
     <div class="social-links">
       <a href="https://github.com/kndxhz/blog" target="_blank">
         <span class="sr-only">博客的 GitHub 链接</span>

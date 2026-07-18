@@ -1,0 +1,330 @@
+---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+import Header from "../components/Header.astro";
+import { ClientRouter } from "astro:transitions";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const tagCounts = new Map<string, number>();
+
+for (const post of posts) {
+  for (const tag of post.data.tags) {
+    tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
+  }
+}
+
+const tags = [...tagCounts.entries()].sort(
+  ([aTag, aCount], [bTag, bCount]) =>
+    bCount - aCount || aTag.localeCompare(bTag),
+);
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <BaseHead title={`标签 - ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+    <ClientRouter />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <section class="page-head">
+        <div>
+          <p class="eyebrow">标签</p>
+          <h1>按标签筛选文章</h1>
+        </div>
+        <p class="page-copy">支持多选。点击标签按钮可组合筛选。</p>
+      </section>
+
+      <section class="tag-panel" aria-labelledby="available-tags-title">
+        <div class="section-head">
+          <h2 id="available-tags-title">全部标签</h2>
+          <p id="tag-summary">请选择一个或多个标签。</p>
+        </div>
+        <div class="tag-list filter-tags" id="tag-filters">
+          {
+            tags.map(([tag, count]) => (
+              <button class="tag-chip filter-chip" type="button" data-tag={tag}>
+                <>
+                  <span>{tag}</span>
+                  <span class="tag-count">{count}</span>
+                </>
+              </button>
+            ))
+          }
+        </div>
+      </section>
+
+      <section class="results" aria-labelledby="results-title">
+        <div class="section-head">
+          <h2 id="results-title">文章</h2>
+          <button class="clear-btn" type="button" id="clear-filters"
+            >清空筛选</button
+          >
+        </div>
+        <ul class="tag-posts" id="post-list">
+          {
+            posts.map((post) => (
+              <li class="tag-post" data-tags={post.data.tags.join(",")}>
+                <a href={`/${post.id}/`}>
+                  {post.data.heroImage && (
+                    <Image
+                      width={480}
+                      height={270}
+                      src={post.data.heroImage}
+                      alt=""
+                    />
+                  )}
+                  <div class="post-copy">
+                    <h3>{post.data.title}</h3>
+                    <p>{post.data.description}</p>
+                    <div class="post-meta">
+                      <span>
+                        <FormattedDate date={post.data.pubDate} />
+                      </span>
+                      <span>{post.data.tags.join(" · ")}</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="empty-state" id="empty-state" hidden>
+          没有符合当前筛选的文章。
+        </p>
+      </section>
+    </main>
+    <Footer />
+
+    <script is:inline>
+      const filtersEl = document.getElementById("tag-filters");
+      const postsEl = document.getElementById("post-list");
+      const summaryEl = document.getElementById("tag-summary");
+      const emptyEl = document.getElementById("empty-state");
+      const clearBtn = document.getElementById("clear-filters");
+
+      function readSelectedTags() {
+        const params = new URLSearchParams(window.location.search);
+        const raw = params.get("tags") || "";
+        return raw
+          .split(",")
+          .map((tag) => tag.trim())
+          .filter(Boolean);
+      }
+
+      function writeSelectedTags(tags) {
+        const params = new URLSearchParams(window.location.search);
+        if (tags.length > 0) {
+          params.set("tags", tags.join(","));
+        } else {
+          params.delete("tags");
+        }
+        const nextUrl = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ""}`;
+        window.history.replaceState({}, "", nextUrl);
+      }
+
+      function render() {
+        const selected = new Set(readSelectedTags());
+        const chips = filtersEl
+          ? Array.from(filtersEl.querySelectorAll("[data-tag]"))
+          : [];
+        const items = postsEl
+          ? Array.from(postsEl.querySelectorAll("[data-tags]"))
+          : [];
+        let visibleCount = 0;
+
+        chips.forEach((chip) => {
+          chip.classList.toggle("active", selected.has(chip.dataset.tag));
+        });
+
+        items.forEach((item) => {
+          const itemTags = (item.getAttribute("data-tags") || "")
+            .split(",")
+            .map((tag) => tag.trim())
+            .filter(Boolean);
+          const visible =
+            selected.size === 0 ||
+            [...selected].every((tag) => itemTags.includes(tag));
+          item.hidden = !visible;
+          if (visible) visibleCount += 1;
+        });
+
+        if (summaryEl) {
+          summaryEl.textContent =
+            selected.size === 0
+              ? `共 ${items.length} 篇文章。`
+              : `已选 ${selected.size} 个标签，显示 ${visibleCount} 篇文章。`;
+        }
+
+        if (emptyEl) {
+          emptyEl.hidden = visibleCount !== 0;
+        }
+      }
+
+      function toggleTag(tag) {
+        const selected = new Set(readSelectedTags());
+        if (selected.has(tag)) {
+          selected.delete(tag);
+        } else {
+          selected.add(tag);
+        }
+        writeSelectedTags([...selected]);
+        render();
+      }
+
+      if (filtersEl) {
+        filtersEl.addEventListener("click", (event) => {
+          const button = event.target.closest("[data-tag]");
+          if (!button) return;
+          toggleTag(button.dataset.tag);
+        });
+      }
+
+      if (clearBtn) {
+        clearBtn.addEventListener("click", () => {
+          writeSelectedTags([]);
+          render();
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", render);
+      document.addEventListener("astro:page-load", render);
+    </script>
+  </body>
+</html>
+
+<style>
+  main {
+    width: min(100%, 1080px);
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .page-head,
+  .tag-panel,
+  .results {
+    padding: 0;
+  }
+  .page-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .eyebrow {
+    margin: 0 0 0.4rem;
+    color: var(--primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+  h1,
+  h2 {
+    margin: 0;
+  }
+  .page-copy {
+    margin: 0;
+    max-width: 32rem;
+    color: rgb(var(--gray));
+    line-height: 1.7;
+  }
+  .section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.9rem;
+  }
+  .section-head p {
+    margin: 0;
+    color: rgb(var(--gray));
+    font-size: 0.92rem;
+  }
+  .filter-tags {
+    margin-top: 0.25rem;
+  }
+  .filter-chip {
+    border: 0;
+    cursor: pointer;
+  }
+  .clear-btn {
+    border: 0;
+    padding: 0.6rem 0.9rem;
+    border-radius: 999px;
+    background: var(--surface-container-high);
+    color: rgb(var(--gray-dark));
+    font: inherit;
+    cursor: pointer;
+  }
+  .tag-posts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+  .tag-post a {
+    display: grid;
+    grid-template-columns: 9rem minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+    padding: 0.9rem 0;
+    text-decoration: none;
+    border-bottom: 1px solid var(--outline);
+  }
+  .tag-post img {
+    width: 9rem;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+  .post-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-width: 0;
+  }
+  .post-copy h3 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+  .post-copy p {
+    margin: 0;
+    color: rgb(var(--gray));
+    line-height: 1.6;
+  }
+  .post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    color: rgb(var(--gray));
+    font-size: 0.9rem;
+  }
+  .empty-state {
+    margin: 1rem 0 0;
+    color: rgb(var(--gray));
+  }
+  @media (max-width: 720px) {
+    .page-head,
+    .section-head {
+      align-items: start;
+      flex-direction: column;
+    }
+    .tag-post a {
+      grid-template-columns: 1fr;
+    }
+    .tag-post img {
+      width: 100%;
+    }
+  }
+</style>
