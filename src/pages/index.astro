@@ -78,15 +78,23 @@ const posts = (await getCollection("blog")).sort(
                         />
                       )}
                       <div class="post-copy">
-                        <h4 class="title" transition:name={`post-title-${post.id}`}>
+                        <h4
+                          class="title"
+                          transition:name={`post-title-${post.id}`}
+                        >
                           {post.data.title}
                         </h4>
                         <p class="excerpt">{post.data.description}</p>
                         <p class="date">
                           <FormattedDate date={post.data.pubDate} />
                         </p>
-                        <div class="tag-list" aria-label={`标签: ${post.data.tags.join(", ")}`}>
-                          {post.data.tags.map((tag) => <span class="tag-chip">{tag}</span>)}
+                        <div
+                          class="tag-list"
+                          aria-label={`标签: ${post.data.tags.join(", ")}`}
+                        >
+                          {post.data.tags.map((tag) => (
+                            <span class="tag-chip">{tag}</span>
+                          ))}
                         </div>
                       </div>
                     </a>
