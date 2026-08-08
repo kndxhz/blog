@@ -24,6 +24,10 @@ const { title, description, image = FallbackImage } = Astro.props;
 <script is:inline>
 	(function () {
 		try {
+			const theme = window.localStorage.getItem('theme-preference');
+			if (theme === 'light' || theme === 'dark') {
+				document.documentElement.dataset.theme = theme;
+			}
 			if (window.localStorage.getItem('sidebar-collapsed') === '1') {
 				document.documentElement.classList.add('sidebar-collapsed');
 			}
