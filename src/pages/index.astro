@@ -33,19 +33,18 @@ const posts = (await getCollection("blog")).sort(
           <p class="sub-title">喵喵?喵喵喵?喵喵喵!</p>
         </div>
         <div class="hitokoto-wrap">
-          <figure
+          <button
             class="home-hitokoto"
+            type="button"
             aria-label="一言"
-            tabindex="0"
-            role="button"
             aria-expanded="false"
             aria-controls="hitokoto-detail"
           >
-            <blockquote id="hitokoto-content">
+            <span class="hitokoto-quote" id="hitokoto-content">
               永远相信美好的事情即将发生
-            </blockquote>
-            <figcaption id="hitokoto-source">一言加载中...</figcaption>
-          </figure>
+            </span>
+            <span class="hitokoto-source" id="hitokoto-source">一言加载中...</span>
+          </button>
           <aside
             id="hitokoto-detail"
             class="hitokoto-detail"
@@ -141,6 +140,12 @@ const posts = (await getCollection("blog")).sort(
     min-width: 0;
     box-sizing: border-box;
     cursor: pointer;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
+    background: transparent;
+    font: inherit;
+    text-align: left;
   }
   .hitokoto-wrap {
     position: relative;
@@ -153,9 +158,9 @@ const posts = (await getCollection("blog")).sort(
     outline-offset: 6px;
     border-radius: 8px;
   }
-  .home-hitokoto blockquote {
+  .home-hitokoto .hitokoto-quote {
+    display: -webkit-box;
     margin: 0;
-    border: 0;
     padding: 0;
     color: rgb(var(--black));
     font-family:
@@ -170,15 +175,16 @@ const posts = (await getCollection("blog")).sort(
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
   }
-  .home-hitokoto blockquote::before {
+  .home-hitokoto .hitokoto-quote::before {
     content: "“";
     color: var(--primary);
   }
-  .home-hitokoto blockquote::after {
+  .home-hitokoto .hitokoto-quote::after {
     content: "”";
     color: var(--primary);
   }
-  .home-hitokoto figcaption {
+  .home-hitokoto .hitokoto-source {
+    display: block;
     margin-top: 0.65rem;
     color: rgb(var(--gray));
     font-size: 0.9rem;
@@ -360,7 +366,7 @@ const posts = (await getCollection("blog")).sort(
       width: 100%;
       padding-left: 1rem;
     }
-    .home-hitokoto figcaption {
+    .home-hitokoto .hitokoto-source {
       text-align: left;
     }
     .hitokoto-detail {

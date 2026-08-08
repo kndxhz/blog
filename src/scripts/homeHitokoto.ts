@@ -64,7 +64,7 @@ function loadHomeHitokoto() {
 }
 
 function initHitokotoDetail() {
-  const trigger = document.querySelector<HTMLElement>(".home-hitokoto");
+  const trigger = document.querySelector<HTMLButtonElement>(".home-hitokoto");
   const detail = document.querySelector<HTMLElement>("#hitokoto-detail");
   if (!trigger || !detail || trigger.dataset.detailReady === "true") return;
 
@@ -103,12 +103,6 @@ function initHitokotoDetail() {
   };
 
   trigger.addEventListener("click", toggleDetail);
-  trigger.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      toggleDetail();
-    }
-  });
 }
 
 export function initHomePage() {
