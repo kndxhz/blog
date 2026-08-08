@@ -708,6 +708,7 @@ html.sidebar-collapsed body > header .internal-links a::before {
 
   body > header {
     min-height: auto;
+    padding: 0.5rem;
     position: sticky;
     top: 0;
     z-index: 10;
@@ -718,28 +719,77 @@ html.sidebar-collapsed body > header .internal-links a::before {
   body > header nav {
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 0.25rem;
+    flex-wrap: nowrap;
   }
 
-  body > header .brand {
-    flex: 1 1 auto;
-    min-width: 0;
-    border-radius: 20px;
+  body > header .brand-row,
+  html.sidebar-collapsed body > header .brand-row {
+    flex: 0 0 auto;
+    width: auto;
+    justify-content: flex-start;
+  }
+
+  body > header .brand,
+  html.sidebar-collapsed body > header .brand {
+    display: none;
   }
 
   body > header .internal-links {
-    flex: 0 0 auto;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: row;
+    align-items: center;
+    width: auto;
+    gap: 0.25rem;
   }
 
   body > header .internal-links a {
-    min-height: 2.75rem;
-    padding: 0 0.9rem;
+    min-height: 2.5rem;
+    padding: 0 0.5rem;
+    gap: 0.4rem;
+    font-size: 0.88rem;
   }
 
-  body > header .social-links {
+  body > header .social-links,
+  html.sidebar-collapsed body > header .social-links {
+    display: flex;
     margin-top: 0;
+    gap: 0.25rem;
+  }
+
+  body > header .social-links a,
+  body > header .theme-toggle {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  html.sidebar-collapsed body > header {
+    padding: 0.5rem;
+  }
+
+  html.sidebar-collapsed body > header nav {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+
+  html.sidebar-collapsed body > header .internal-links {
+    flex-direction: row;
+    align-items: center;
+    width: auto;
+  }
+
+  html.sidebar-collapsed body > header .internal-links a {
+    width: 2.5rem;
+    height: 2.5rem;
+    min-height: 2.5rem;
+    margin: 0;
+  }
+
+  html.sidebar-collapsed body > header .nav-label {
+    display: none;
   }
 }
 
