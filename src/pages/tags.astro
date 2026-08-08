@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
@@ -74,15 +73,6 @@ const tags = [...tagCounts.entries()].sort(
             posts.map((post) => (
               <li class="tag-post" data-tags={post.data.tags.join(",")}>
                 <a href={`/${post.id}/`}>
-                  {post.data.heroImage && (
-                    <Image
-                      width={480}
-                      height={270}
-                      src={post.data.heroImage}
-                      alt=""
-                      transition:name={`post-image-${post.id}`}
-                    />
-                  )}
                   <div class="post-copy">
                     <h3 transition:name={`post-title-${post.id}`}>
                       {post.data.title}
@@ -186,10 +176,7 @@ const tags = [...tagCounts.entries()].sort(
     gap: 0.75rem;
   }
   .tag-post a {
-    display: grid;
-    grid-template-columns: 8rem minmax(0, 1fr);
-    gap: 1rem;
-    align-items: start;
+    display: block;
     min-height: 5.5rem;
     padding: 0.75rem 1rem;
     text-decoration: none;
@@ -201,12 +188,6 @@ const tags = [...tagCounts.entries()].sort(
   .tag-post a:hover {
     background: var(--state-layer);
   }
-  .tag-post img {
-    width: 8rem;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    border-radius: 12px;
-  }
   .post-copy {
     display: flex;
     flex-direction: column;
@@ -215,8 +196,8 @@ const tags = [...tagCounts.entries()].sort(
   }
   .post-copy h3 {
     margin: 0;
-    font-size: 1.25rem;
-    line-height: 1.2;
+    font-size: 1.5rem;
+    line-height: 1.25;
     color: rgb(var(--black));
   }
   .post-copy p {
@@ -248,12 +229,6 @@ const tags = [...tagCounts.entries()].sort(
     .section-head {
       align-items: start;
       flex-direction: column;
-    }
-    .tag-post a {
-      grid-template-columns: 1fr;
-    }
-    .tag-post img {
-      width: 100%;
     }
   }
 </style>
