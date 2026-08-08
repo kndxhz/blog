@@ -1,0 +1,228 @@
+================================================================================
+DUAL LICENSE FOR THIS BLOG PROJECT
+================================================================================
+
+This project is licensed under a dual-license model. Different parts of the
+project are governed by different licenses as described below. By using,
+modifying, copying, or distributing this project, you agree to comply with
+the terms of all applicable licenses.
+
+--------------------------------------------------------------------------------
+PART 1: SOURCE CODE LICENSE
+--------------------------------------------------------------------------------
+
+All source code files in this project, including but not limited to files with
+the following extensions:
+    .ts, .js, .astro, .css, .json, .html, .svg, .vue, .jsx, .tsx, .scss, .less,
+    .yaml, .yml, .toml, .sh, .bash, .py, .go, .rs, .java, .c, .cpp, .h, .hpp,
+    .sql, .prisma, .graphql, .gql, .lock, .config, .env.example, .gitignore,
+    .dockerfile, .dockerignore, and any other files primarily containing
+    executable code, configuration, build scripts, or programmatic logic
+
+are licensed under the GNU General Public License Version 3 (GPLv3).
+
+The full text of the GNU General Public License Version 3 is provided in the
+file named "GPL_V3" located in the root directory of this project. If that file
+is missing, you may obtain a copy at:
+    https://www.gnu.org/licenses/gpl-3.0.html
+
+In accordance with GPLv3 Section 4, any modified, copied, or distributed
+version of this project MUST include a copy of the GPLv3 license text (the
+GPL_V3 file) and this dual-license notice. The source code must remain
+available under the same GPLv3 terms.
+
+--------------------------------------------------------------------------------
+PART 2: CONTENT LICENSE
+--------------------------------------------------------------------------------
+
+All content files in this project, including but not limited to files with
+the following extensions:
+    .md, .mdx, .txt, .png, .jpg, .jpeg, .gif, .webp, .bmp, .tiff, .ico,
+    .mp4, .webm, .mov, .avi, .mp3, .wav, .ogg, .pdf, .doc, .docx, .epub,
+    .ppt, .pptx, .xls, .xlsx, .csv, .rtf, .odt, .ods, .odp, .pages, .numbers,
+    .key, .psd, .ai, .sketch, .fig, .drawio, .excalidraw, .mmd, and any other
+    files primarily containing written articles, blog posts, essays, images,
+    photographs, illustrations, diagrams, videos, audio recordings, documents,
+    presentations, spreadsheets, or other creative or informational content
+
+are licensed under the Creative Commons Attribution-NonCommercial-ShareAlike
+4.0 International License (CC BY-NC-SA 4.0).
+
+The full text of the CC BY-NC-SA 4.0 license is provided in the file named
+"CC_BY-NC-SA_4_0" located in the root directory of this project. If that file
+is missing, you may obtain a copy at:
+    https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+
+In accordance with CC BY-NC-SA 4.0, any modified, copied, or distributed
+version of the content MUST include: (1) attribution to the original author,
+(2) a copy of this dual-license notice, (3) a copy of the CC BY-NC-SA 4.0
+license text (the CC_BY-NC-SA_4_0 file), and (4) the content must be shared
+under identical terms. Commercial use of the content is strictly prohibited
+without prior written permission.
+
+--------------------------------------------------------------------------------
+PART 3: COMPLIANCE REQUIREMENTS FOR REDISTRIBUTION
+--------------------------------------------------------------------------------
+
+If you modify, copy, or distribute this project (in whole or in part), you
+MUST comply with ALL of the following requirements:
+
+1. Include this exact dual-license file (LICENSE) in the root directory of
+   your redistributed or modified version.
+
+2. Include the complete, unmodified "GPL_V3" file in the root directory.
+
+3. Include the complete, unmodified "CC_BY-NC-SA_4_0" file in the root
+   directory.
+
+4. Clearly identify which files fall under which license, either by:
+   (a) maintaining the original file structure and extensions as defined above,
+   (b) including a NOTICE or README file that maps files to their respective
+       licenses, or
+   (c) adding license headers to individual files where appropriate.
+
+5. For source code modifications: the modified source code must remain under
+   GPLv3, and you must provide access to the complete corresponding source
+   code as required by GPLv3 Section 6.
+
+6. For content modifications: the modified content must remain under
+   CC BY-NC-SA 4.0, with proper attribution and share-alike terms applied.
+
+7. You may NOT remove, alter, or obscure any copyright notices, license
+   notices, or attribution information present in the original project.
+
+8. You may NOT apply additional restrictions that conflict with the terms
+   of GPLv3 or CC BY-NC-SA 4.0.
+
+--------------------------------------------------------------------------------
+PART 4: SEPARABILITY AND CONFLICT RESOLUTION
+--------------------------------------------------------------------------------
+
+If any provision of this dual-license arrangement is found to be invalid or
+unenforceable under applicable law, such provision shall be modified to the
+minimum extent necessary to make it valid and enforceable, and the remaining
+provisions shall continue in full force and effect.
+
+If a conflict arises between the terms of GPLv3 and CC BY-NC-SA 4.0 as applied
+to this project, the more restrictive terms shall apply to the respective
+category of files (source code or content) to which they pertain. Neither
+license shall be interpreted as extending its scope to files clearly falling
+under the other license category.
+
+--------------------------------------------------------------------------------
+PART 5: DISCLAIMER OF WARRANTY
+--------------------------------------------------------------------------------
+
+THIS PROJECT IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING
+FROM, OUT OF, OR IN CONNECTION WITH THE PROJECT OR THE USE OR OTHER DEALINGS
+IN THE PROJECT.
+
+================================================================================
+================================================================================
+
+================================================================================
+本项目双重许可协议
+================================================================================
+
+本项目采用双重许可模式。项目的不同部分受不同许可协议的约束，具体如下所述。
+使用、修改、复制或分发本项目，即表示您同意遵守所有适用许可协议的条款。
+
+--------------------------------------------------------------------------------
+第一部分：源代码许可协议
+--------------------------------------------------------------------------------
+
+本项目中的所有源代码文件，包括但不限于具有以下扩展名的文件：
+    .ts, .js, .astro, .css, .json, .html, .svg, .vue, .jsx, .tsx, .scss, .less,
+    .yaml, .yml, .toml, .sh, .bash, .py, .go, .rs, .java, .c, .cpp, .h, .hpp,
+    .sql, .prisma, .graphql, .gql, .lock, .config, .env.example, .gitignore,
+    .dockerfile, .dockerignore，以及任何其他主要包含可执行代码、配置文件、
+    构建脚本或程序逻辑的文件
+
+均受 GNU 通用公共许可证第三版（GPLv3）的约束。
+
+GNU 通用公共许可证第三版的完整文本见本项目根目录下名为 "GPL_V3" 的文件。
+若该文件缺失，您可通过以下链接获取副本：
+    https://www.gnu.org/licenses/gpl-3.0.html
+
+根据 GPLv3 第 4 条的规定，对本项目的任何修改、复制或分发版本必须包含
+GPLv3 许可协议全文（即 GPL_V3 文件）以及本双重许可声明。源代码必须继续
+在相同的 GPLv3 条款下保持可获取。
+
+--------------------------------------------------------------------------------
+第二部分：内容许可协议
+--------------------------------------------------------------------------------
+
+本项目中的所有内容文件，包括但不限于具有以下扩展名的文件：
+    .md, .mdx, .txt, .png, .jpg, .jpeg, .gif, .webp, .bmp, .tiff, .ico,
+    .mp4, .webm, .mov, .avi, .mp3, .wav, .ogg, .pdf, .doc, .docx, .epub,
+    .ppt, .pptx, .xls, .xlsx, .csv, .rtf, .odt, .ods, .odp, .pages, .numbers,
+    .key, .psd, .ai, .sketch, .fig, .drawio, .excalidraw, .mmd，以及任何其他
+    主要包含文章、博客帖子、散文、图像、照片、插图、图表、视频、音频记录、
+    文档、演示文稿、电子表格或其他创意或信息内容的文件
+
+均受知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议
+（CC BY-NC-SA 4.0）的约束。
+
+CC BY-NC-SA 4.0 的完整文本见本项目根目录下名为 "CC_BY-NC-SA_4_0" 的文件。
+若该文件缺失，您可通过以下链接获取副本：
+    https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+
+根据 CC BY-NC-SA 4.0 的规定，对内容的任何修改、复制或分发版本必须包含：
+(1) 对原作者的署名；(2) 本双重许可声明的副本；(3) CC BY-NC-SA 4.0 许可协议
+全文（即 CC_BY-NC-SA_4_0 文件）的副本；(4) 内容必须在相同条款下共享。
+未经事先书面许可，严禁将内容用于商业用途。
+
+--------------------------------------------------------------------------------
+第三部分：再分发的合规要求
+--------------------------------------------------------------------------------
+
+如果您修改、复制或分发本项目（全部或部分），您必须遵守以下所有要求：
+
+1. 在您重新分发或修改后的版本的根目录中包含本双重许可文件（LICENSE）。
+
+2. 在根目录中包含完整、未经修改的 "GPL_V3" 文件。
+
+3. 在根目录中包含完整、未经修改的 "CC_BY-NC-SA_4_0" 文件。
+
+4. 明确标识哪些文件适用哪种许可协议，可通过以下任一方式：
+   (a) 保持上述定义的文件结构和扩展名不变；
+   (b) 包含 NOTICE 或 README 文件，将文件映射到其各自的许可协议；或
+   (c) 在适当情况下为单个文件添加许可协议头。
+
+5. 对于源代码的修改：修改后的源代码必须继续受 GPLv3 约束，并且您必须
+   按照 GPLv3 第 6 条的要求提供完整的相应源代码的访问权限。
+
+6. 对于内容的修改：修改后的内容必须继续受 CC BY-NC-SA 4.0 约束，
+   并适用适当的署名和相同方式共享条款。
+
+7. 您不得删除、更改或掩盖原始项目中存在的任何版权声明、许可协议声明
+   或署名信息。
+
+8. 您不得施加与 GPLv3 或 CC BY-NC-SA 4.0 条款相冲突的额外限制。
+
+--------------------------------------------------------------------------------
+第四部分：可分割性与冲突解决
+--------------------------------------------------------------------------------
+
+如果本双重许可安排的任何条款根据适用法律被认定为无效或不可执行，则该
+条款应在必要的最小范围内予以修改，使其有效且可执行，其余条款应继续
+完全有效。
+
+如果 GPLv3 和 CC BY-NC-SA 4.0 的条款在适用于本项目时发生冲突，则更具
+限制性的条款应适用于其所属的文件类别（源代码或内容）。任何许可协议均
+不得被解释为将其范围扩展至明确属于另一许可协议类别的文件。
+
+--------------------------------------------------------------------------------
+第五部分：免责声明
+--------------------------------------------------------------------------------
+
+本项目按"原样"提供，不提供任何形式的担保，无论是明示还是暗示，包括但
+不限于对适销性、特定用途适用性和非侵权性的担保。在任何情况下，作者或
+版权持有者均不对因本项目或与本项目相关的使用或其他交易而产生的任何
+索赔、损害或其他责任承担责任，无论是在合同、侵权还是其他行为中。
+
+================================================================================
