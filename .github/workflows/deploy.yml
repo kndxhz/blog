@@ -1,0 +1,92 @@
+name: Deploy Astro Blog
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+
+jobs:
+  deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+
+          echo "${{ secrets.DEPLOY_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+
+          chmod 600 ~/.ssh/deploy_key
+
+          ssh-keyscan -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts
+
+
+      - name: Deploy
+        env:
+          HOST: ${{ secrets.DEPLOY_HOST }}
+          USER: ${{ secrets.DEPLOY_USER }}
+          KEY: ~/.ssh/deploy_key
+          KEY_PASSWORD: ${{ secrets.DEPLOY_KEY_PASSWORD }}
+
+        run: |
+
+          ssh \
+            -i "$KEY" \
+            $USER@$HOST <<'EOF'
+
+              set -e
+
+
+              BLOG_DIR="$HOME/blog"
+
+
+              if [ -d "$BLOG_DIR/.git" ]; then
+
+                  echo "Updating repository..."
+
+                  cd "$BLOG_DIR"
+
+                  git pull
+
+              else
+
+                  echo "Cloning repository..."
+
+                  git clone \
+                    https://github.com/kndxhz/blog \
+                    "$BLOG_DIR"
+
+                  cd "$BLOG_DIR"
+
+              fi
+
+
+              echo "Installing dependencies..."
+
+              npm install
+
+
+              echo "Building Astro..."
+
+              npm run build
+
+
+              echo "Deploying files..."
+
+              rm -rf /www/blog_site/*
+
+              cp -r dist/* /www/blog_site/
+
+
+              echo "Deployment finished."
+
+          EOF
