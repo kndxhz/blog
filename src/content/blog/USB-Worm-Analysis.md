@@ -9,11 +9,13 @@ pubDate: "2025-09-29"
 
 HASH
 
+```text
 SHA256:523043df1038626b7b99d866ec0eb1e9417c02199cdde5b79c053a417012f540
 
 MD5:b76dfdbed9694290f4f441fb67c45c86
 
 SHA1:414fc2ae569cd5d75c7c11e8e2226ddd10c99b66
+```
 
 [https://s.threatbook.com/report/file/523043df1038626b7b99d866ec0eb1e9417c02199cdde5b79c053a417012f540](https://s.threatbook.com/report/file/523043df1038626b7b99d866ec0eb1e9417c02199cdde5b79c053a417012f540)
 
