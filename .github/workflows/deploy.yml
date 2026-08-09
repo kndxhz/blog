@@ -16,11 +16,11 @@ jobs:
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@main
 
 
       - name: Setup SSH Agent
-        uses: webfactory/ssh-agent@v0.10.0
+        uses: webfactory/ssh-agent@master
         with:
           ssh-private-key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
 
