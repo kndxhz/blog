@@ -14,79 +14,42 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
 
-      - name: Setup SSH
+      - name: Setup SSH Agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
+
+
+      - name: Add SSH host key
         run: |
           mkdir -p ~/.ssh
-      
-          printf "%s" "${{ secrets.DEPLOY_PRIVATE_KEY }}" > ~/.ssh/deploy_key
-      
-          chmod 600 ~/.ssh/deploy_key
-      
           ssh-keyscan -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts
 
 
-      - name: Deploy
-        env:
-          HOST: ${{ secrets.DEPLOY_HOST }}
-          USER: ${{ secrets.DEPLOY_USER }}
-          KEY: ~/.ssh/deploy_key
-          KEY_PASSWORD: ${{ secrets.DEPLOY_KEY_PASSWORD }}
+      - name: Test SSH
+        run: |
+          ssh \
+            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
+            "git --version"
 
+
+      - name: Deploy
         run: |
 
           ssh \
-            -i "$KEY" \
-            $USER@$HOST <<'EOF'
-
-              set -e
+            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
+            "if [ -d ~/blog/.git ]; then cd ~/blog && git pull; else git clone https://github.com/kndxhz/blog ~/blog; fi"
 
 
-              BLOG_DIR="$HOME/blog"
+          ssh \
+            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
+            "cd ~/blog && npm install && npm run build"
 
 
-              if [ -d "$BLOG_DIR/.git" ]; then
-
-                  echo "Updating repository..."
-
-                  cd "$BLOG_DIR"
-
-                  git pull
-
-              else
-
-                  echo "Cloning repository..."
-
-                  git clone \
-                    https://github.com/kndxhz/blog \
-                    "$BLOG_DIR"
-
-                  cd "$BLOG_DIR"
-
-              fi
-
-
-              echo "Installing dependencies..."
-
-              npm install
-
-
-              echo "Building Astro..."
-
-              npm run build
-
-
-              echo "Deploying files..."
-
-              rm -rf /www/blog_site/*
-
-              cp -r dist/* /www/blog_site/
-
-
-              echo "Deployment finished."
-
-          EOF
+          ssh \
+            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
+            "rm -rf /www/blog_site/* && cp -r ~/blog/dist/* /www/blog_site/"
