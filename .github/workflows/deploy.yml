@@ -30,13 +30,6 @@ jobs:
           ssh-keyscan -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts
 
 
-      - name: Test SSH
-        run: |
-          ssh \
-            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
-            "git --version"
-
-
       - name: Deploy
         run: |
 
