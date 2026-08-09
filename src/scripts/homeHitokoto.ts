@@ -41,7 +41,8 @@ function loadHomeHitokoto() {
     (result) => {
       const data = result.data;
       const origin = data?.origin;
-      if (!data || !origin?.title || !origin?.author || !origin?.dynasty) return;
+      if (!data || !origin?.title || !origin?.author || !origin?.dynasty)
+        return;
 
       content.textContent = data.content ?? "";
       source.textContent = `【${origin.dynasty}】${origin.author}《${origin.title}》`;
@@ -49,7 +50,8 @@ function loadHomeHitokoto() {
         detailOrigin.textContent = `【${origin.dynasty}】${origin.author}《${origin.title}》`;
       }
       if (detailContent) {
-        detailContent.textContent = origin.content?.join("\n") ?? data.content ?? "";
+        detailContent.textContent =
+          origin.content?.join("\n") ?? data.content ?? "";
       }
       if (detailTranslate) {
         detailTranslate.textContent = origin.translate?.length

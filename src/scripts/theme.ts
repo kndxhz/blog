@@ -9,7 +9,7 @@ function getSystemTheme(): Theme {
 
 function getTheme(): Theme {
   return document.documentElement.dataset.theme === "dark" ||
-      document.documentElement.dataset.theme === "light"
+    document.documentElement.dataset.theme === "light"
     ? (document.documentElement.dataset.theme as Theme)
     : getSystemTheme();
 }
@@ -24,7 +24,9 @@ function updateToggle(toggle: HTMLButtonElement) {
 }
 
 export function initTheme() {
-  const toggle = document.querySelector<HTMLButtonElement>("[data-theme-toggle]");
+  const toggle = document.querySelector<HTMLButtonElement>(
+    "[data-theme-toggle]",
+  );
   if (!toggle || toggle.dataset.themeReady === "true") return;
 
   toggle.dataset.themeReady = "true";

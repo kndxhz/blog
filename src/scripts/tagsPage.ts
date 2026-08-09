@@ -50,7 +50,8 @@ export function initTagsPage() {
         .map((tag) => tag.trim())
         .filter(Boolean);
       const visible =
-        selected.size === 0 || [...selected].every((tag) => itemTags.includes(tag));
+        selected.size === 0 ||
+        [...selected].every((tag) => itemTags.includes(tag));
       item.hidden = !visible;
       if (visible) visibleCount += 1;
     });

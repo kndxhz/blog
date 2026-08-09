@@ -1,12 +1,14 @@
 ---
-title: '【ATRI】体验'
-description: '全通了ATRI,浅浅评价一下'
+title: "【ATRI】体验"
+description: "全通了ATRI,浅浅评价一下"
 tags:
   - 日常
   - 游戏
-pubDate: '2024-11-17'
+pubDate: "2024-11-17"
 ---
+
 # ⚠️剧透警告！⚠️
+
 这个galgame虽说没有R-18，而且体积也不是很大，但也是经典之作之一
 
 其实大致的剧情一句话就能概括

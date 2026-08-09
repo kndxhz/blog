@@ -1,10 +1,11 @@
 ---
-title: '红米buds 4 pro 左右耳音量不一样修复'
-description: '红米buds 4 pro 左右耳音量不一样修复'
+title: "红米buds 4 pro 左右耳音量不一样修复"
+description: "红米buds 4 pro 左右耳音量不一样修复"
 tags:
   - 日常
-pubDate: '2024-08-09'
+pubDate: "2024-08-09"
 ---
+
 我草，小米这品控不想说什么了  
 我的红米buds4pro，右耳音量明显比左耳小很少  
 结果就是  

@@ -8,8 +8,7 @@ import { ClientRouter } from "astro:transitions";
 
 type Props = CollectionEntry<"blog">["data"] & { slug: string };
 
-const { title, description, pubDate, updatedDate, tags, slug } =
-  Astro.props;
+const { title, description, pubDate, updatedDate, tags, slug } = Astro.props;
 ---
 
 <html lang="zh-CN">

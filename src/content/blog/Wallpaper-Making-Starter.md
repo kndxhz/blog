@@ -1,10 +1,11 @@
 ---
-title: 'Wallpaper壁纸制作上手'
-description: '试了一下做了一个Wallpaper壁纸'
+title: "Wallpaper壁纸制作上手"
+description: "试了一下做了一个Wallpaper壁纸"
 tags:
   - 技术
-pubDate: '2025-05-25'
+pubDate: "2025-05-25"
 ---
+
 # 前言
 
 最近一直在搜罗新奇的Wallpaper壁纸
@@ -49,14 +50,13 @@ Wallpaper得益于steam强大且丰富的创意工坊，拥有一大批精美优
 
 Wallpaper将壁纸分为了
 
--   场景
-    
--   视频
-    
--   网页
-    
--   应用程序
-    
+- 场景
+
+- 视频
+
+- 网页
+
+- 应用程序
 
 这四大类，下面就简要说明一下
 
@@ -131,15 +131,15 @@ Wallpaper自带一个极其丰富的编辑器
 然后按照js的语法写了一些简单的代码，大佬轻喷
 
 ```javascript
-'use strict';
+"use strict";
 
 /**
  * @param {Boolean} value - for property 'visible'
  * @return {Boolean} - update current property value
  */
 export function update(value) {
-	check(engine.userProperties);//每一刻都检查用户属性
-	return value;
+  check(engine.userProperties); //每一刻都检查用户属性
+  return value;
 }
 /**
  * @param {Object} changedUserProperties - only includes user properties that were recently changed!
@@ -147,37 +147,36 @@ export function update(value) {
 //所以这是个麻烦事，还不如直接使用engine.userProperties来进行读取属性
  */
 export function applyUserProperties(changedUserProperties) {
-    check(changedUserProperties);//用户属性被更改时更需要检查
+  check(changedUserProperties); //用户属性被更改时更需要检查
 }
-export function check(changedUserProperties){
-    if (changedUserProperties.wallpaperetype !== undefined) {
-        shared.chose = changedUserProperties.wallpaperetype;//拿到wallpaperetype组件用户选择的类型（默认是Auto）（没错，我多打了个e，只能将错就错）
+export function check(changedUserProperties) {
+  if (changedUserProperties.wallpaperetype !== undefined) {
+    shared.chose = changedUserProperties.wallpaperetype; //拿到wallpaperetype组件用户选择的类型（默认是Auto）（没错，我多打了个e，只能将错就错）
+  }
+
+  //console.log("Current choice:", shared.chose);
+  if (engine.userProperties.wallpaperetype === "Auto") {
+    let date = new Date();
+    let hour = date.getHours(); //拿到小时
+    //let hour = 1;
+    //console.log(hour,shared.hour);
+    //console.log(engine.userProperties.daystarts,engine.userProperties.eveningstarts);
+    if (
+      hour >= engine.userProperties.daystarts &&
+      hour < engine.userProperties.eveningstarts
+    ) {
+      //如果在指定的时间范围内
+      thisLayer.visible = true; //图层可见
+    } else {
+      //否则
+      thisLayer.visible = false; //不可见
     }
-    
-    //console.log("Current choice:", shared.chose);
-    if (engine.userProperties.wallpaperetype === "Auto") {
-        let date = new Date();
-        let hour = date.getHours();//拿到小时
-        //let hour = 1;
-        //console.log(hour,shared.hour);
-        //console.log(engine.userProperties.daystarts,engine.userProperties.eveningstarts);
-        if (hour >= engine.userProperties.daystarts && hour < engine.userProperties.eveningstarts){
-            //如果在指定的时间范围内
-            thisLayer.visible = true;//图层可见
-            
-        }else{//否则
-            thisLayer.visible = false;//不可见
-        }
-        
-    } 
-    else if (shared.chose === "Day") {
-        //如果选择为Day，那么就始终可见
-        thisLayer.visible = true;
-        
-    }else{
-        thisLayer.visible = false;
-    }
-    
+  } else if (shared.chose === "Day") {
+    //如果选择为Day，那么就始终可见
+    thisLayer.visible = true;
+  } else {
+    thisLayer.visible = false;
+  }
 }
 
 /**
@@ -185,59 +184,55 @@ export function check(changedUserProperties){
  * @return {Boolean} - update current property value
  */
 export function init(value) {
-    engine.userProperties.wallpaperetype = "Auto";//阿巴阿巴我也不知道这是干嘛的，但是如果不加可能会导致拿不到属性值
-    engine.userProperties.daystarts = 5;
-	return value;
+  engine.userProperties.wallpaperetype = "Auto"; //阿巴阿巴我也不知道这是干嘛的，但是如果不加可能会导致拿不到属性值
+  engine.userProperties.daystarts = 5;
+  return value;
 }
-
 ```
 
 然后以此类推复制四份出来稍微改一下，尤其是Night的跨24点的策略
 
 ```javascript
-
-'use strict';
+"use strict";
 
 /**
  * @param {Boolean} value - for property 'visible'
  * @return {Boolean} - update current property value
  */
 export function update(value) {
-	check(engine.userProperties);
-	return value;
+  check(engine.userProperties);
+  return value;
 }
 /**
  * @param {Object} changedUserProperties - only includes user properties that were recently changed!
  */
 export function applyUserProperties(changedUserProperties) {
-    check(changedUserProperties);
+  check(changedUserProperties);
 }
-export function check(changedUserProperties){
-    if (changedUserProperties.wallpaperetype !== undefined) {
-        shared.chose = changedUserProperties.wallpaperetype;
-    }
-    //console.log("Current choice:", shared.chose);
-    if (shared.chose === "Auto") {
-        const date = new Date();
-        const hour = date.getHours();
-        const nightStarts = engine.userProperties.nightstarts;
-        const morningStarts = engine.userProperties.morningstarts;
+export function check(changedUserProperties) {
+  if (changedUserProperties.wallpaperetype !== undefined) {
+    shared.chose = changedUserProperties.wallpaperetype;
+  }
+  //console.log("Current choice:", shared.chose);
+  if (shared.chose === "Auto") {
+    const date = new Date();
+    const hour = date.getHours();
+    const nightStarts = engine.userProperties.nightstarts;
+    const morningStarts = engine.userProperties.morningstarts;
 
-        // 处理跨天逻辑
-        if (nightStarts < morningStarts) {
-            // 常规时间段（不跨天）
-            thisLayer.visible = (hour >= nightStarts && hour < morningStarts);
-        } else {
-            // 跨天时间段（覆盖午夜）
-            thisLayer.visible = (hour >= nightStarts || hour < morningStarts);
-        }
+    // 处理跨天逻辑
+    if (nightStarts < morningStarts) {
+      // 常规时间段（不跨天）
+      thisLayer.visible = hour >= nightStarts && hour < morningStarts;
+    } else {
+      // 跨天时间段（覆盖午夜）
+      thisLayer.visible = hour >= nightStarts || hour < morningStarts;
     }
-    else if (shared.chose === "Night") {
-        thisLayer.visible = true;
-    }
-    else {
-        thisLayer.visible = false;
-    }
+  } else if (shared.chose === "Night") {
+    thisLayer.visible = true;
+  } else {
+    thisLayer.visible = false;
+  }
 }
 ```
 

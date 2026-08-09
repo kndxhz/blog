@@ -12,7 +12,9 @@ function animateSidebarChange() {
 }
 
 export function initSidebar() {
-  const toggle = document.querySelector<HTMLButtonElement>("[data-sidebar-toggle]");
+  const toggle = document.querySelector<HTMLButtonElement>(
+    "[data-sidebar-toggle]",
+  );
   if (!toggle || toggle.dataset.sidebarReady === "true") return;
 
   toggle.dataset.sidebarReady = "true";
@@ -20,20 +22,15 @@ export function initSidebar() {
   const stored = window.localStorage.getItem(STORAGE_KEY) === "1";
   setCollapsed(stored);
   toggle.setAttribute("aria-expanded", String(!stored));
-  toggle.setAttribute(
-    "aria-label",
-    stored ? "展开侧边栏" : "收起侧边栏",
-  );
+  toggle.setAttribute("aria-label", stored ? "展开侧边栏" : "收起侧边栏");
 
   toggle.addEventListener("click", () => {
-    const collapsed = !document.documentElement.classList.contains("sidebar-collapsed");
+    const collapsed =
+      !document.documentElement.classList.contains("sidebar-collapsed");
     animateSidebarChange();
     setCollapsed(collapsed);
     toggle.setAttribute("aria-expanded", String(!collapsed));
-    toggle.setAttribute(
-      "aria-label",
-      collapsed ? "展开侧边栏" : "收起侧边栏",
-    );
+    toggle.setAttribute("aria-label", collapsed ? "展开侧边栏" : "收起侧边栏");
     window.localStorage.setItem(STORAGE_KEY, collapsed ? "1" : "0");
   });
 }
