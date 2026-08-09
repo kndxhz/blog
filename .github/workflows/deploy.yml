@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -27,22 +28,21 @@ jobs:
       - name: Add SSH host key
         run: |
           mkdir -p ~/.ssh
+
           ssh-keyscan -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts
 
 
+      # 测试 SSH
+      - name: Test SSH
+        run: |
+          ssh \
+            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
+            "git --version"
+
+
+      # 执行部署
       - name: Deploy
         run: |
-
           ssh \
             ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
-            "if [ -d ~/blog/.git ]; then cd ~/blog && git pull; else git clone https://github.com/kndxhz/blog ~/blog; fi"
-
-
-          ssh \
-            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
-            "cd ~/blog && npm install && npm run build"
-
-
-          ssh \
-            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
-            "rm -rf /www/blog_site/* && cp -r ~/blog/dist/* /www/blog_site/"
+            "deploy"
