@@ -28,19 +28,9 @@ jobs:
       - name: Add SSH host key
         run: |
           mkdir -p ~/.ssh
-
           ssh-keyscan -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts
 
 
-      # 测试 SSH
-      - name: Test SSH
-        run: |
-          ssh \
-            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
-            "git --version"
-
-
-      # 执行部署
       - name: Deploy
         run: |
           ssh \
