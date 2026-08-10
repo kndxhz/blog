@@ -648,9 +648,10 @@ body > header .commit-link svg {
   height: 0.9rem;
 }
 
-body > header .commit-link code {
+body > header .commit-hash {
   color: inherit;
   font-size: inherit;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 }
 
 html.sidebar-collapsed body > header {

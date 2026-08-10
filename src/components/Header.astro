@@ -90,7 +90,7 @@ const commitHash = import.meta.env.PUBLIC_GIT_COMMIT;
             title={`查看 commit ${commitHash}`}
           >
             <span class="commit-icon" aria-hidden="true" set:html={gitIcon} />
-            <code>{commitHash}</code>
+            <span class="commit-hash">{commitHash}</span>
             <span class="sr-only">在 GitHub 查看当前构建的 commit</span>
           </a>
         )
