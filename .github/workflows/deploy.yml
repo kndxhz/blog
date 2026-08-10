@@ -30,4 +30,4 @@ jobs:
         run: |
           ssh \
             ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
-            "deploy  -commit ${{ github.sha }}"
+            "deploy -commit ${{ github.sha }}"
