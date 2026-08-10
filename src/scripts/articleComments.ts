@@ -8,6 +8,9 @@ interface CommentsState {
   comments?: ReturnType<typeof Artalk.init>;
   initTimer?: number;
   observer?: MutationObserver;
+  themeObserver?: MutationObserver;
+  colorSchemeQuery?: MediaQueryList;
+  colorSchemeListener?: () => void;
 }
 
 declare global {
@@ -26,8 +29,48 @@ export function destroyArticleComments() {
   window.clearTimeout(state.initTimer);
   state.observer?.disconnect();
   state.observer = undefined;
+  state.themeObserver?.disconnect();
+  state.themeObserver = undefined;
+  if (state.colorSchemeQuery && state.colorSchemeListener) {
+    state.colorSchemeQuery.removeEventListener(
+      "change",
+      state.colorSchemeListener,
+    );
+  }
+  state.colorSchemeQuery = undefined;
+  state.colorSchemeListener = undefined;
   state.comments?.destroy();
   state.comments = undefined;
+}
+
+function isDarkTheme() {
+  const theme = document.documentElement.dataset.theme;
+  if (theme === "dark") return true;
+  if (theme === "light") return false;
+  return window.matchMedia("(prefers-color-scheme: dark)").matches;
+}
+
+function syncArtalkTheme() {
+  getState().comments?.setDarkMode(isDarkTheme());
+}
+
+function watchThemeChanges() {
+  const state = getState();
+  state.themeObserver?.disconnect();
+  state.themeObserver = new MutationObserver(syncArtalkTheme);
+  state.themeObserver.observe(document.documentElement, {
+    attributeFilter: ["data-theme"],
+  });
+
+  if (state.colorSchemeQuery && state.colorSchemeListener) {
+    state.colorSchemeQuery.removeEventListener(
+      "change",
+      state.colorSchemeListener,
+    );
+  }
+  state.colorSchemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  state.colorSchemeListener = syncArtalkTheme;
+  state.colorSchemeQuery.addEventListener("change", state.colorSchemeListener);
 }
 
 function patchArtalkAccessibility(el: HTMLElement) {
@@ -53,7 +96,10 @@ export function initArticleComments() {
       pageTitle: el.dataset.pageTitle || document.title,
       server: SERVER,
       site: SITE,
+      darkMode: isDarkTheme(),
     });
+    syncArtalkTheme();
+    watchThemeChanges();
     patchArtalkAccessibility(el);
     state.observer = new MutationObserver(() => patchArtalkAccessibility(el));
     state.observer.observe(el, { childList: true, subtree: true });

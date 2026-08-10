@@ -265,14 +265,104 @@ img {
   cursor: zoom-out;
 }
 
+.post-comments .artalk {
+  --at-color-font: rgb(var(--gray-dark));
+  --at-color-deep: rgb(var(--black));
+  --at-color-sub: rgb(var(--gray));
+  --at-color-grey: rgb(var(--gray));
+  --at-color-meta: rgb(var(--gray));
+  --at-color-border: var(--outline);
+  --at-color-light: var(--primary-container);
+  --at-color-bg: var(--surface);
+  --at-color-bg-transl: color-mix(in srgb, var(--surface) 94%, transparent);
+  --at-color-bg-grey: var(--surface-container);
+  --at-color-bg-grey-transl: color-mix(
+    in srgb,
+    var(--surface-container) 82%,
+    transparent
+  );
+  --at-color-bg-light: var(--state-layer);
+  --at-color-main: var(--primary);
+  --at-color-gradient: linear-gradient(180deg, transparent, var(--surface));
+}
+
+.post-comments .artalk.atk-dark-mode {
+  --at-color-font: rgb(var(--gray-dark));
+  --at-color-deep: rgb(var(--black));
+  --at-color-sub: rgb(var(--gray));
+  --at-color-grey: rgb(var(--gray));
+  --at-color-meta: rgb(var(--gray));
+  --at-color-border: var(--outline);
+  --at-color-light: var(--primary-container);
+  --at-color-bg: var(--surface-container);
+  --at-color-bg-transl: color-mix(
+    in srgb,
+    var(--surface-container) 95%,
+    transparent
+  );
+  --at-color-bg-grey: var(--surface-container-high);
+  --at-color-bg-grey-transl: color-mix(
+    in srgb,
+    var(--surface-container-high) 88%,
+    transparent
+  );
+  --at-color-bg-light: var(--state-layer);
+  --at-color-main: var(--primary);
+  --at-color-gradient: linear-gradient(
+    180deg,
+    transparent,
+    var(--surface-container)
+  );
+}
+
+.post-comments .atk-editor,
+.post-comments .atk-comment,
+.post-comments .atk-list-header,
+.post-comments .atk-list-footer,
+.post-comments .atk-main-editor {
+  color: rgb(var(--gray-dark));
+}
+
+.post-comments .atk-editor {
+  background: var(--surface);
+  border-color: var(--outline);
+}
+
+.post-comments .artalk.atk-dark-mode .atk-editor {
+  background: var(--surface-container);
+}
+
+.post-comments .atk-editor textarea,
+.post-comments .atk-editor input {
+  color: rgb(var(--gray-dark));
+}
+
+.post-comments .atk-editor textarea::placeholder,
+.post-comments .atk-editor input::placeholder {
+  color: rgb(var(--gray));
+}
+
+.post-comments .atk-plug-btn,
+.post-comments .atk-common-action-btn,
+.post-comments .atk-dropdown-trigger {
+  color: rgb(var(--gray));
+}
+
+.post-comments .atk-plug-btn:hover,
+.post-comments .atk-common-action-btn:hover,
+.post-comments .atk-dropdown-trigger:hover {
+  color: var(--primary);
+  background: var(--state-layer);
+}
+
 .atk-send-btn {
-  background: #005ecb !important;
+  background: var(--primary) !important;
   color: #ffffff !important;
 }
 
 .atk-send-btn:hover,
 .atk-send-btn:focus-visible {
-  background: #004a9f !important;
+  background: var(--accent-dark) !important;
 }
 
 code {
