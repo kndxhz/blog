@@ -3,7 +3,29 @@ const today = new Date();
 ---
 
 <footer>
-  &copy; {today.getFullYear()} kndxhz. All rights reserved.
+  <div class="copyright">
+    &copy; {today.getFullYear()} kndxhz. All rights reserved.
+  </div>
+  <div class="footer-links">
+    <a
+      href="https://icp.gov.moe/?keyword=20245488"
+      target="_blank"
+      rel="noopener noreferrer">萌ICP备20245488号</a
+    >
+    <a
+      href="https://travel.moe/go.html"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="link-instanted"
+    >
+      <img
+        src="https://travel.moe/images/logo/default-white.png"
+        loading="lazy"
+        alt="异次元之旅-跃迁"
+        title="异次元之旅-跃迁-我们一起去萌站成员的星球旅行吧！"
+      />
+    </a>
+  </div>
 </footer>
 <style>
   footer {
@@ -11,5 +33,44 @@ const today = new Date();
     background: transparent;
     color: rgb(var(--gray));
     text-align: center;
+  }
+
+  .footer-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .footer-links a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .footer-links a:hover {
+    color: var(--primary);
+  }
+
+  .link-instanted {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    background: #263228;
+    transition: opacity 0.18s ease;
+  }
+
+  .link-instanted:hover {
+    opacity: 0.82;
+  }
+
+  .link-instanted img {
+    display: block;
+    width: auto;
+    height: 24px;
   }
 </style>
