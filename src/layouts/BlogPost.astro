@@ -98,6 +98,9 @@ const articleUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin)
   </head>
 
   <body>
+    <script>
+      import "../scripts/articleImageZoom";
+    </script>
     <Header />
     <main transition:animate="fade">
       <article>
