@@ -5,13 +5,19 @@ const zoom = mediumZoom({
   margin: 24,
 });
 
+let initTimer: number | undefined;
+
 export function initArticleImageZoom() {
-  zoom.detach();
-  zoom.attach(
-    document.querySelectorAll<HTMLImageElement>(
-      ".prose img:not([data-no-zoom])",
-    ),
-  );
+  window.clearTimeout(initTimer);
+  initTimer = window.setTimeout(() => {
+    void zoom.close();
+    zoom.detach();
+    zoom.attach(
+      document.querySelectorAll<HTMLImageElement>(
+        ".prose img:not([data-no-zoom])",
+      ),
+    );
+  }, 0);
 }
 
 if (typeof window !== "undefined") {
