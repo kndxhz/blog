@@ -91,10 +91,11 @@ html[data-theme="dark"] {
 
 @font-face {
   font-family: "JetBrains Maple Mono";
-  src: url("/fonts/JetBrainsMapleMono-Regular.ttf") format("truetype");
+  src: url("https://xhz.cn-sy1.rains3.com/JetBrainsMapleMono-Regular.ttf")
+    format("truetype");
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  font-display: optional;
 }
 
 body {
@@ -391,11 +392,6 @@ body > header .sidebar-toggle svg {
   height: 1rem;
 }
 
-body > header .sidebar-toggle i {
-  font-size: 1rem;
-  line-height: 1;
-}
-
 body > header .sidebar-icon-expand {
   display: none;
 }
@@ -476,11 +472,6 @@ body > header .nav-icon {
 body > header .nav-icon svg {
   width: 1rem;
   height: 1rem;
-}
-
-body > header .nav-icon i {
-  font-size: 1rem;
-  line-height: 1;
 }
 
 body > header .nav-label {
@@ -608,9 +599,10 @@ body > header .theme-toggle.is-switching {
   }
 }
 
-body > header .theme-toggle i {
-  font-size: 1rem;
-  line-height: 1;
+body > header .theme-toggle svg {
+  display: block;
+  width: 1rem;
+  height: 1rem;
 }
 
 .theme-icon-sun {
@@ -650,9 +642,10 @@ body > header .social-links .commit-link {
   font-size: 0.78rem;
 }
 
-body > header .commit-link i {
-  font-size: 0.9rem;
-  line-height: 1;
+body > header .commit-link svg {
+  display: block;
+  width: 0.9rem;
+  height: 0.9rem;
 }
 
 body > header .commit-link code {

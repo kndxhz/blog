@@ -1,4 +1,12 @@
 ---
+import chevronLeftIcon from "bootstrap-icons/icons/chevron-left.svg?raw";
+import chevronRightIcon from "bootstrap-icons/icons/chevron-right.svg?raw";
+import gitIcon from "bootstrap-icons/icons/git.svg?raw";
+import houseIcon from "bootstrap-icons/icons/house-fill.svg?raw";
+import moonIcon from "bootstrap-icons/icons/moon-fill.svg?raw";
+import sunIcon from "bootstrap-icons/icons/sun-fill.svg?raw";
+import tagsIcon from "bootstrap-icons/icons/tags-fill.svg?raw";
+import trainIcon from "bootstrap-icons/icons/train-front-fill.svg?raw";
 import { SITE_TITLE } from "../consts";
 import HeaderLink from "./HeaderLink.astro";
 
@@ -26,23 +34,25 @@ const commitHash = import.meta.env.PUBLIC_GIT_COMMIT;
         aria-label="收起侧边栏"
         aria-expanded="true"
       >
-        <i class="bi bi-chevron-left sidebar-icon-collapse" aria-hidden="true"
-        ></i>
-        <i class="bi bi-chevron-right sidebar-icon-expand" aria-hidden="true"
-        ></i>
+        <span
+          class="sidebar-icon-collapse"
+          aria-hidden="true"
+          set:html={chevronLeftIcon}
+        />
+        <span
+          class="sidebar-icon-expand"
+          aria-hidden="true"
+          set:html={chevronRightIcon}
+        />
       </button>
     </div>
     <div class="internal-links">
       <HeaderLink href="/" aria-label="主页">
-        <span class="nav-icon" aria-hidden="true">
-          <i class="bi bi-house-fill" aria-hidden="true"></i>
-        </span>
+        <span class="nav-icon" aria-hidden="true" set:html={houseIcon} />
         <span class="nav-label">主页</span>
       </HeaderLink>
       <HeaderLink href="/tags" aria-label="标签">
-        <span class="nav-icon" aria-hidden="true">
-          <i class="bi bi-tags-fill" aria-hidden="true"></i>
-        </span>
+        <span class="nav-icon" aria-hidden="true" set:html={tagsIcon} />
         <span class="nav-label">标签</span>
       </HeaderLink>
       <a
@@ -51,9 +61,7 @@ const commitHash = import.meta.env.PUBLIC_GIT_COMMIT;
         rel="noopener noreferrer"
         aria-label="开往-友链接力"
       >
-        <span class="nav-icon" aria-hidden="true">
-          <i class="bi bi-train-front-fill" aria-hidden="true"></i>
-        </span>
+        <span class="nav-icon" aria-hidden="true" set:html={trainIcon} />
         <span class="nav-label">开往</span>
       </a>
     </div>
@@ -68,8 +76,8 @@ const commitHash = import.meta.env.PUBLIC_GIT_COMMIT;
         >
       </a>
       <button class="theme-toggle" type="button" data-theme-toggle>
-        <i class="bi bi-moon-fill theme-icon-moon" aria-hidden="true"></i>
-        <i class="bi bi-sun-fill theme-icon-sun" aria-hidden="true"></i>
+        <span class="theme-icon-moon" aria-hidden="true" set:html={moonIcon} />
+        <span class="theme-icon-sun" aria-hidden="true" set:html={sunIcon} />
         <span class="sr-only">切换主题</span>
       </button>
       {
@@ -81,7 +89,7 @@ const commitHash = import.meta.env.PUBLIC_GIT_COMMIT;
             rel="noopener noreferrer"
             title={`查看 commit ${commitHash}`}
           >
-            <i class="bi bi-git" aria-hidden="true" />
+            <span class="commit-icon" aria-hidden="true" set:html={gitIcon} />
             <code>{commitHash}</code>
             <span class="sr-only">在 GitHub 查看当前构建的 commit</span>
           </a>
