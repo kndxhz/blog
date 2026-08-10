@@ -42,8 +42,7 @@ export function initArticleComments() {
       pageKey: el.dataset.pageKey || window.location.pathname,
       pageTitle: el.dataset.pageTitle || document.title,
       server: SERVER,
-      site: SITE,
-      emoticons: false,
+      site: SITE
     });
   }, 0);
 }
