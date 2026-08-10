@@ -9,6 +9,7 @@ import { ClientRouter } from "astro:transitions";
 type Props = CollectionEntry<"blog">["data"] & { slug: string };
 
 const { title, description, pubDate, updatedDate, tags, slug } = Astro.props;
+const articlePath = Astro.url.pathname;
 const articleUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin)
   .href;
 ---
@@ -86,6 +87,11 @@ const articleUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin)
       .post-license a {
         overflow-wrap: anywhere;
       }
+      .post-comments {
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--outline);
+      }
       @media (max-width: 720px) {
         .prose {
           padding-bottom: 1rem;
@@ -99,6 +105,7 @@ const articleUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin)
 
   <body>
     <script>
+      import "../scripts/articleComments";
       import "../scripts/articleImageZoom";
     </script>
     <Header />
@@ -137,6 +144,13 @@ const articleUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin)
               本文链接：<a href={articleUrl}>{articleUrl}</a>
             </p>
           </aside>
+          <section class="post-comments" aria-label="评论">
+            <div
+              data-artalk-comments
+              data-page-key={articlePath}
+              data-page-title={title}
+            />
+          </section>
         </div>
       </article>
     </main>
