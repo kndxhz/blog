@@ -265,6 +265,16 @@ img {
   cursor: zoom-out;
 }
 
+.atk-send-btn {
+  background: #005ecb !important;
+  color: #ffffff !important;
+}
+
+.atk-send-btn:hover,
+.atk-send-btn:focus-visible {
+  background: #004a9f !important;
+}
+
 code {
   font-family:
     "JetBrains Maple Mono", "SFMono-Regular", Consolas, "Liberation Mono",

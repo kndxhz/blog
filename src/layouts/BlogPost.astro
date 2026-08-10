@@ -149,7 +149,9 @@ const articleUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin)
               data-artalk-comments
               data-page-key={articlePath}
               data-page-title={title}
-            />
+            >
+              <span class="artalk-pv-count">评论加载中...</span>
+            </div>
           </section>
         </div>
       </article>
