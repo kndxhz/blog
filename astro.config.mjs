@@ -39,6 +39,7 @@ export default defineConfig({
     inlineStylesheets: "always",
   },
   markdown: {
+    syntaxHighlight: false,
     processor: unified({
       remarkPlugins: [remarkMdFormat],
       rehypePlugins: [rehypePrioritizeFirstImage],
