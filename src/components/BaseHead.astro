@@ -28,10 +28,20 @@ const imageURL = typeof image === "string" ? image : image.src;
 <script is:inline>
   (function () {
     try {
-      const theme = window.localStorage.getItem("theme-preference");
-      if (theme === "light" || theme === "dark") {
-        document.documentElement.dataset.theme = theme;
-      }
+      const storedTheme = window.localStorage.getItem("theme-preference");
+      const preference =
+        storedTheme === "light" ||
+        storedTheme === "dark" ||
+        storedTheme === "system"
+          ? storedTheme
+          : "system";
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+        .matches
+        ? "dark"
+        : "light";
+      document.documentElement.dataset.themePreference = preference;
+      document.documentElement.dataset.theme =
+        preference === "system" ? systemTheme : preference;
       if (window.localStorage.getItem("sidebar-collapsed") === "1") {
         document.documentElement.classList.add("sidebar-collapsed");
       }

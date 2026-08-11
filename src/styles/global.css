@@ -960,20 +960,34 @@ body > header .theme-toggle svg {
   display: none;
 }
 
+.theme-icon-system {
+  display: none;
+}
+
+html[data-theme-preference="system"] .theme-icon-moon,
+html[data-theme-preference="system"] .theme-icon-sun {
+  display: none;
+}
+
+html[data-theme-preference="system"] .theme-icon-system {
+  display: inline-block;
+}
+
 html[data-theme="dark"] .theme-icon-moon {
   display: none;
 }
 
-html[data-theme="dark"] .theme-icon-sun {
+html[data-theme="dark"]:not([data-theme-preference="system"]) .theme-icon-sun {
   display: inline-block;
 }
 
 @media (prefers-color-scheme: dark) {
-  html:not([data-theme]) .theme-icon-moon {
+  html:not([data-theme]):not([data-theme-preference="system"])
+    .theme-icon-moon {
     display: none;
   }
 
-  html:not([data-theme]) .theme-icon-sun {
+  html:not([data-theme]):not([data-theme-preference="system"]) .theme-icon-sun {
     display: inline-block;
   }
 }

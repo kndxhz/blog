@@ -4,6 +4,7 @@ import chevronRightIcon from "bootstrap-icons/icons/chevron-right.svg?raw";
 import gitIcon from "bootstrap-icons/icons/git.svg?raw";
 import houseIcon from "bootstrap-icons/icons/house-fill.svg?raw";
 import moonIcon from "bootstrap-icons/icons/moon-fill.svg?raw";
+import circleHalfIcon from "bootstrap-icons/icons/circle-half.svg?raw";
 import sunIcon from "bootstrap-icons/icons/sun-fill.svg?raw";
 import tagsIcon from "bootstrap-icons/icons/tags-fill.svg?raw";
 import trainIcon from "bootstrap-icons/icons/train-front-fill.svg?raw";
@@ -78,6 +79,11 @@ const commitHash = import.meta.env.PUBLIC_GIT_COMMIT;
       <button class="theme-toggle" type="button" data-theme-toggle>
         <span class="theme-icon-moon" aria-hidden="true" set:html={moonIcon} />
         <span class="theme-icon-sun" aria-hidden="true" set:html={sunIcon} />
+        <span
+          class="theme-icon-system"
+          aria-hidden="true"
+          set:html={circleHalfIcon}
+        />
         <span class="sr-only">切换主题</span>
       </button>
       {
