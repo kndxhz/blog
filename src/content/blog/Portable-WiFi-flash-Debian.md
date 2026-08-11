@@ -13,7 +13,7 @@ pubDate: "2024-03-13"
 
 现在很多棒子都不是高通方案，买的时候要么跟车要么碰运气  
 板子图片参考下图
-![部分主板方案](../../assets/image-ztup.png)
+![image](https://blog-image.cn-sy1.rains3.com/AgACAgEAAxkBAAOtanrwK6OYMVZN0dZL8mPxnpOtZ3kAAqsMaxvNBtlHC78UBDTjCosBAAMCAAN5AAM9BA.webp)
 
 ## 软件/工具
 
@@ -34,25 +34,25 @@ pubDate: "2024-03-13"
 
 打开 miko tool 选择红圈里面的选项卡  
 点击 `Load Partition Structure` 加载分区表，然后点击 `Read Full Image` 选择一个目录保存备份并等待进度条跑完
-![miko tool 选项卡](../../assets/image-cull.png)
+![image](https://blog-image.cn-sy1.rains3.com/AgACAgEAAxkBAAOxanrwPtd_4PWJVMNbcRAyWVIh_5YAAqwMaxvNBtlH-NgNZqrqM-sBAAMCAAN5AAM9BA.webp)
 双击 `Double Click To Open EMMC DATA` 选择备份的文件点 `FLASH!` 刷入
-![miko tool 选项卡](../../assets/image-aoqh.png)
+![image](https://blog-image.cn-sy1.rains3.com/AgACAgEAAxkBAAO1anrwVanhvw_x-6yadZdhXCM-IRcAAq0MaxvNBtlHhD5ZV4VZe5ABAAMCAAN5AAM9BA.webp)
 进入9008模式  
 下面是两种对板子动手动脚进入9008的方式  
 或者使用命令 `adb reboot edl`
-![UFI_16_V3](../../assets/image-zdxt.png)
-![JFI001C](../../assets/image-kkaj.png)
+![image](https://blog-image.cn-sy1.rains3.com/AgACAgEAAxkBAAO5anrwZLUV-ElNhojK8O9jeZxGylYAAq4MaxvNBtlHAAFOzhockmdJAQADAgADdwADPQQ.webp)
+![image](https://blog-image.cn-sy1.rains3.com/AgACAgEAAxkBAAO7anrwaDofi9bvrpxdqtPYsKQ_fYsAAq8MaxvNBtlHm-Tm49HDlUABAAMCAAN3AAM9BA.webp)
 需要安装9008驱动才能正确显示，不然显示未知设备
-![设备管理器页面](../../assets/image-myep.png)
+![image](https://blog-image.cn-sy1.rains3.com/AgACAgEAAxkBAAPBanrwgDzv-btaPGRHSLfyYOOH2dwAArAMaxvNBtlHRXcjK4sl95MBAAMCAAN4AAM9BA.webp)
 
 ## 刷机
 
 运行 flash.bat 等待重启后按照提示按下任意键继续刷入，出现 all done 字样时代表刷机完成
-![刷入成功](../../assets/image-nqkq.png)
+![image](https://blog-image.cn-sy1.rains3.com/AgACAgEAAxkBAAPFanrxKFYLXPAB15zBIA0zFq_NbY8AArEMaxvNBtlHJIZTIUUF3qQBAAMCAAN5AAM9BA.webp)
 如果 BL 锁了部分刷不进去的话需要把 boot 或者 aboot 用 Qualcomm Premium Tool 手动刷进去再执行 flash.bat 脚本刷机  
 按照下图中红圈的部分打开对应的选项卡  
 先点击紫色的 Scan 加载分区表，在表中选中要刷的分区，再点击黄色的 Write ，点击 Do Job 选择文件刷入
-![强刷](../../assets/image-pckk.png)
+![image](https://blog-image.cn-sy1.rains3.com/AgACAgEAAxkBAAPGanrxKhZDgZTSaUqdk_DQdpolE40AArIMaxvNBtlHjRBugSLMeNMBAAMCAAN5AAM9BA.webp)
 
 ## 连接Debian
 
@@ -62,5 +62,5 @@ pubDate: "2024-03-13"
 选择一个你喜欢的 SSH 工具连接随身 WiFi 的 Debian 系统，IP `192.168.68.1`，用户名 `root`，默认密码 `1`  
 使用 `nmtui命令` 按键盘方向键操作，点击 `编辑连接` - `网桥-bridge` - `编辑`  
 按照下图把 wifi 的模式改成`Client` ，别忘了翻到最下面保存  
-![nmtui](../../assets/image-olhl.png)
+![image](https://blog-image.cn-sy1.rains3.com/AgACAgEAAxkBAAPNanrxSD1m8Yt-268l6c9FmWXwYVUAArMMaxvNBtlHNiPHP3I7iSYBAAMCAAN5AAM9BA.webp)
 此时返回 nmtui首页选择启用连接就能连接自家 WIFI 了

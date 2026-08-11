@@ -46,7 +46,7 @@ BE就更不用说了
 
 我比较赞同这个网友的评论：
 
-![b站评论](https://xhz.cn-sy1.rains3.com/551c675bc4c47511d742d2232ac67db0-uq41.png)
+![image](https://blog-image.cn-sy1.rains3.com/AgACAgEAAxkBAAPRanrxZ3yTqlg36OxiYVQ5-XoG5r4AArQMaxvNBtlHLHMZnj8AAR3bAQADAgADdwADPQQ.webp)
 
 是啊，已经60年过去了
 

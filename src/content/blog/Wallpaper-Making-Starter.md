@@ -12,7 +12,7 @@ pubDate: "2025-05-25"
 
 这是我的壁纸列表
 
-![](https://xhz.cn-sy1.rains3.com/image.png)
+![image](https://blog-image.cn-sy1.rains3.com/AgACAgEAAxkBAAPhanrx6IapRrrx84_1VtBnRJJYhwcAArgMaxvNBtlHLS8tSBVfzKcBAAMCAAN3AAM9BA.webp)
 
 这些都是我比较喜欢的壁纸
 
@@ -106,17 +106,17 @@ Wallpaper自带一个极其丰富的编辑器
 
 打开之后，你就可以看到上文提到的壁纸类型了，你可以先试试视频和网页，先摸清Wallpaper编辑器的基础使用
 
-![](https://xhz.cn-sy1.rains3.com/image-jv4t.png)
+![image](https://blog-image.cn-sy1.rains3.com/AgACAgEAAxkBAAPjanrx7_7Jb31y4isIJcUtVn2be-IAArkMaxvNBtlHcHlK_0zPudQBAAMCAAN4AAM9BA.webp)
 
 这里就以场景类壁纸做上手了
 
 先从 原壁纸那里提取出四个webm格式视频，转化为mp4，加入素材
 
-![](https://xhz.cn-sy1.rains3.com/image-nrq8.png)
+![image](https://blog-image.cn-sy1.rains3.com/AgACAgEAAxkBAAPkanrx8iQ5P0osHeNwe8_zVMjKTCQAAroMaxvNBtlH06B5AAEoXN-dAQADAgADeAADPQQ.webp)
 
 之后在页面下方的“用户属性”面板添加几个属性，这就是用户可以自定义的内容
 
-![](https://xhz.cn-sy1.rains3.com/image-ngwq.png)
+![image](https://blog-image.cn-sy1.rains3.com/AgACAgEAAxkBAAPoanrx9vH-E-W4vgfrDHgmpGVYlCsAArsMaxvNBtlHnqWRQpGDJrQBAAMCAAN5AAM9BA.webp)
 
 可以看到出现了警告图标，鼠标放上面一看，没有绑定组件，我们在这里使用脚本对其进行检测和绑定，可以直接忽略
 
@@ -126,7 +126,7 @@ Wallpaper自带一个极其丰富的编辑器
 
 在图层详情的右上角可以看见一个齿轮图标，点击打开“绑定脚本”
 
-![](https://xhz.cn-sy1.rains3.com/image-oxcv.png)
+![image](https://blog-image.cn-sy1.rains3.com/AgACAgEAAxkBAAPxanryG7wp7bZkgOCHiyztFpNrFOcAArwMaxvNBtlH9Zirh4wTEHoBAAMCAANtAAM9BA.webp)
 
 然后按照js的语法写了一些简单的代码，大佬轻喷
 
@@ -240,7 +240,7 @@ export function check(changedUserProperties) {
 
 ## 发布！
 
-![](https://xhz.cn-sy1.rains3.com/image-ksj6.png)
+![image](https://blog-image.cn-sy1.rains3.com/AgACAgEAAxkBAAP1anryLRrZhGsL7LZt7bWYiy79jOoAAr0MaxvNBtlHx9jn71Gl9RoBAAMCAAN4AAM9BA.webp)
 
 按照原作者的信息填一下各个信息，加个前缀表明是场景版，直接发布！
 

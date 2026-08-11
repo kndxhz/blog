@@ -24,11 +24,11 @@ pubDate: "2025-07-28"
 
 于是就去官网下载了昂达B610E-B **（第三代）** 的最新固件，刷入我这个和我年龄差不多的4GB的刷机专用U盘
 
-![](https://xhz.cn-sy1.rains3.com/MVIMG_20250728_042843.jpg)
+![image](https://blog-image.cn-sy1.rains3.com/AgACAgEAAxkBAAIBAWp68mJPNTMmPz5vkuNZQSAsLduAAALADGsbzQbZR_CudStPd5HOAQADAgADdwADPQQ.webp)
 
 虽然说我是第一次刷bios没错啦，可是看到这个官方文档里就这几步，我心想“这怎么可能错”
 
-![](https://xhz.cn-sy1.rains3.com/PixPin_2025-07-28_04-13-23.png)
+![image](https://blog-image.cn-sy1.rains3.com/AgACAgEAAxkBAAIBAmp68mPEGFYYqA1vf28scAo2SJfTAALBDGsbzQbZR-UasxSg0Ax3AQADAgADeQADPQQ.webp)
 
 结果您猜怎么着，正如标题所言，还真就错了
 
@@ -62,7 +62,7 @@ bing了好久，b站了好久，试了好多方法，都不管用！
 
 在我脑海里，他除了情商不如ds r1，其他的都是远远超过
 
-![](https://xhz.cn-sy1.rains3.com/PixPin_2025-07-28_04-19-20.png)
+![image](https://blog-image.cn-sy1.rains3.com/AgACAgEAAxkBAAIBCWp68oNQTcxMVTSNNYpNchwFWF1HAALCDGsbzQbZR_NZG_yQn_B0AQADAgADdwADPQQ.webp)
 
 以上是kimi的解决方案
 

@@ -158,9 +158,9 @@ pubDate: "2025-06-07"
     - 在禁用手机的情况下，校园生活便利性受到一定影响
 
 (附图：一些副校长林士俊的帅照和工业学校“八条禁令”）  
-![](https://xhz.cn-sy1.rains3.com/Screenshot_2025-06-07-19-57-18-695_com.tencent.mm-edit.jpg)
+![image](https://blog-image.cn-sy1.rains3.com/AgACAgEAAxkBAAP5anryP2M96Krsd4EF63qV5gtu5E0AAr4MaxvNBtlH3mx0ppjF858BAAMCAAN5AAM9BA.webp)
 
-![](https://xhz.cn-sy1.rains3.com/Image_1749298761017.png)
+![image](https://blog-image.cn-sy1.rains3.com/AgACAgEAAxkBAAP7anryQiN7bvKqPZhfyYl3vUsijx0AAr8MaxvNBtlH79EM4yZPApoBAAMCAAN4AAM9BA.webp)
 
 # 总结
 

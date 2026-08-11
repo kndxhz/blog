@@ -9,9 +9,9 @@ pubDate: "2025-05-19"
 
 我凌晨通关了饿殍：明末千里行，但也同时，早上睡过了，故写一下玩后感
 
-![全通成就](https://xhz.cn-sy1.rains3.com/image-9oo3.png)
+![image](https://blog-image.cn-sy1.rains3.com/AgACAgEAAxkBAAPZanrxq33qmU1lqK1--URw1w0mFoMAArYMaxvNBtlH1dk14qTwFKABAAMCAAN3AAM9BA.webp)
 
-![游戏时长](https://xhz.cn-sy1.rains3.com/image-kpc4.png)
+![image](https://blog-image.cn-sy1.rains3.com/AgACAgEAAxkBAAPbanrxrpCUjIynwTsrCcPk7JYsPp8AArcMaxvNBtlHM-Gq4LGTfVcBAAMCAANtAAM9BA.webp)
 
 ## 总的来说
 
