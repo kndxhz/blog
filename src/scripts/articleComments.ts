@@ -11,6 +11,7 @@ interface CommentsState {
   themeObserver?: MutationObserver;
   colorSchemeQuery?: MediaQueryList;
   colorSchemeListener?: () => void;
+  listenersAttached?: boolean;
 }
 
 declare global {
@@ -107,6 +108,10 @@ export function initArticleComments() {
 }
 
 if (typeof window !== "undefined") {
-  document.addEventListener("astro:before-swap", destroyArticleComments);
-  document.addEventListener("astro:page-load", initArticleComments);
+  const state = getState();
+  if (!state.listenersAttached) {
+    state.listenersAttached = true;
+    document.addEventListener("astro:before-swap", destroyArticleComments);
+    document.addEventListener("astro:page-load", initArticleComments);
+  }
 }
