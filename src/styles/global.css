@@ -1216,6 +1216,17 @@ html.sidebar-collapsed body > header .internal-links a::before {
   }
 }
 
+@media (max-width: 360px) {
+  body > header .social-links .commit-link {
+    width: 2.5rem;
+    padding: 0;
+  }
+
+  body > header .commit-hash {
+    display: none;
+  }
+}
+
 .sr-only {
   border: 0;
   padding: 0;
