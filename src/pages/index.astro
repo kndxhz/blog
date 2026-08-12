@@ -201,6 +201,7 @@ const posts = (await getCollection("blog")).sort(
     top: 0;
     left: calc(100% + 1rem);
     width: min(24rem, calc(100vw - 4rem));
+    box-sizing: border-box;
     padding: 0.9rem 1rem;
     border-radius: 18px;
     background: var(--surface-container);
