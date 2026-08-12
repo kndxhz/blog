@@ -12,6 +12,7 @@ import { SITE_TITLE } from "../consts";
 import HeaderLink from "./HeaderLink.astro";
 
 const commitHash = import.meta.env.PUBLIC_GIT_COMMIT;
+const shortCommitHash = commitHash?.slice(0, 7);
 ---
 
 <header>
@@ -96,7 +97,9 @@ const commitHash = import.meta.env.PUBLIC_GIT_COMMIT;
             title={`查看 commit ${commitHash}`}
           >
             <span class="commit-icon" aria-hidden="true" set:html={gitIcon} />
-            <span class="commit-hash">{commitHash}</span>
+            <span class="commit-hash" data-full-hash={commitHash}>
+              {shortCommitHash}
+            </span>
             <span class="sr-only">在 GitHub 查看当前构建的 commits</span>
           </a>
         )

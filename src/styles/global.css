@@ -1160,7 +1160,18 @@ html.sidebar-collapsed body > header .internal-links a::before {
   }
 
   body > header .social-links .commit-link {
-    display: none;
+    display: inline-flex;
+    width: auto;
+    max-width: 6rem;
+    height: 2.5rem;
+    padding: 0 0.5rem;
+    margin-left: 0;
+  }
+
+  body > header .commit-hash {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   html.sidebar-collapsed body > header {

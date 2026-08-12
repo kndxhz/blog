@@ -283,7 +283,13 @@ const posts = (await getCollection("blog")).sort(
       background-color 0.18s ease,
       color 0.18s ease;
   }
-  ul li a:hover {
+  @media (hover: hover) and (pointer: fine) {
+    ul li a:hover {
+      background: var(--state-layer);
+    }
+  }
+  ul li a:active,
+  ul li a:focus-visible {
     background: var(--state-layer);
   }
   ul li a .title {
@@ -304,8 +310,16 @@ const posts = (await getCollection("blog")).sort(
     font-size: 0.95rem;
     line-height: 1.6;
   }
-  ul li a:hover .title,
-  ul li a:hover .date {
+  @media (hover: hover) and (pointer: fine) {
+    ul li a:hover .title,
+    ul li a:hover .date {
+      color: var(--accent-dark);
+    }
+  }
+  ul li a:active .title,
+  ul li a:active .date,
+  ul li a:focus-visible .title,
+  ul li a:focus-visible .date {
     color: var(--accent-dark);
   }
   .date {

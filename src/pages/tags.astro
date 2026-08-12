@@ -185,7 +185,13 @@ const tags = [...tagCounts.entries()].sort(
       background-color 0.18s ease,
       color 0.18s ease;
   }
-  .tag-post a:hover {
+  @media (hover: hover) and (pointer: fine) {
+    .tag-post a:hover {
+      background: var(--state-layer);
+    }
+  }
+  .tag-post a:active,
+  .tag-post a:focus-visible {
     background: var(--state-layer);
   }
   .post-copy {
