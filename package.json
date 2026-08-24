@@ -14,11 +14,11 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
-    "@astrojs/mdx": "^7.0.3",
+    "@astrojs/mdx": "^7.0.7",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.3",
     "artalk": "^2.10.0",
-    "astro": "^7.1.1",
+    "astro": "^7.2.4",
     "bootstrap-icons": "^1.13.1",
     "highlight.js": "^11.11.1",
     "medium-zoom": "^1.1.0",
@@ -26,7 +26,7 @@
     "shiki": "^4.2.0"
   },
   "devDependencies": {
-    "@astrojs/markdown-remark": "^7.2.1",
+    "@astrojs/markdown-remark": "^7.2.4",
     "@cavillxu/astro-md-format": "^0.1.5",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1"
