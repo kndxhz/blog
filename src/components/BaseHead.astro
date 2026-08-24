@@ -13,7 +13,7 @@ interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = "/site-icon.png" } = Astro.props;
+const { title, description, image = "/site-icon.webp" } = Astro.props;
 const imageURL = typeof image === "string" ? image : image.src;
 ---
 
@@ -51,7 +51,7 @@ const imageURL = typeof image === "string" ? image : image.src;
   })();
 </script>
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" href="/site-icon.png" />
+<link rel="apple-touch-icon" href="/site-icon.webp" />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link
   rel="alternate"
