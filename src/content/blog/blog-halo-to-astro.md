@@ -27,7 +27,7 @@ pubDate: "2026-08-13"
 为了这一套工作流，我是真的~~在数学课上~~思考了好久。最后总结出一套方案，大概是这样的
 
 1. 开源，使用Github作为托管平台，也就是 https://github.com/kndxhz/blog
-2. 使用 [Markra](https://markra.app/) 作为markdown编辑器，获得和Typecho近似的体验
+2. 使用 [Markra](https://markra.app/) 作为markdown编辑器，获得和Typora近似的体验
 3. 使用 [Umami](https://umami.is/) 分析访客，使用 [Artalk](https://artalk.js.org/) 作为评论区
 4. 基于 [GitHub Action](https://github.com/kndxhz/blog/actions) 和我服务器上的自动构建脚本进行网页的 CI/CD 构建，每次commit自动部署（以下有脚本内容，是在我的服务器上的，在自己用的时候一定要注意ssh账户的权限管理！！！）
 5. 把静态网页文件交由1panel的openresty进行分发
