@@ -26,7 +26,7 @@
     "shiki": "^4.2.0"
   },
   "devDependencies": {
-    "@astrojs/markdown-remark": "^7.2.4",
+    "@astrojs/markdown-remark": "^7.3.4",
     "@cavillxu/astro-md-format": "^0.1.5",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1"
