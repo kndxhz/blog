@@ -79,7 +79,7 @@ export async function GET(context) {
   const items = [];
   for (const post of posts) {
     const { Content } = await render(post);
-    const postUrl = new URL(`/blog/${post.id}/`, site);
+    const postUrl = new URL(`/${post.id}/`, site);
     const content = absolutizeHtml(
       await container.renderToString(Content),
       postUrl,
