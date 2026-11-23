@@ -3,11 +3,11 @@
   "type": "module",
   "version": "0.0.1",
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=26.13.1"
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/build.mjs",
+    "build": "npx --yes node@26.13.1 scripts/build.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --write .",
